@@ -1,0 +1,84 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo-small.png';
+import Button from './Button.astro';
+import Container from './Container.astro';
+import Icon from './Icon.astro';
+import PeakAccent from './PeakAccent.astro';
+
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Contact', href: '/contact' },
+];
+
+/* TODO: replace # with the real social profile URLs */
+const socials = [
+  { name: 'linkedin', label: 'LinkedIn', href: '#' },
+  { name: 'youtube', label: 'YouTube', href: '#' },
+  { name: 'instagram', label: 'Instagram', href: '#' },
+] as const;
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-navy-800 text-white">
+  <PeakAccent variant="divider" class="opacity-70" />
+  <Container class="py-12 md:py-16">
+    <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1.2fr]">
+      <div>
+        <a href="/" aria-label="Lead At Your Peak — home">
+          <Image src={logo} alt="Lead At Your Peak" class="h-12 w-auto" densities={[1, 2]} />
+        </a>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
+          Lead with presence. Influence with impact. Perform at your peak.
+        </p>
+      </div>
+
+      <nav aria-label="Footer">
+        <p class="eyebrow eyebrow--on-dark">Explore</p>
+        <ul class="mt-4 space-y-2.5">
+          {
+            navLinks.map((link) => (
+              <li>
+                <a href={link.href} class="text-sm font-medium text-white/85 transition hover:text-gold-200">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div>
+        <p class="eyebrow eyebrow--on-dark">Take the next step</p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <Button href="/contact" class="min-h-11 px-5 py-2.5 text-sm">Book A Call</Button>
+          <Button href="/contact#message" variant="outline-light" class="min-h-11 px-5 py-2.5 text-sm">
+            Send us a message
+          </Button>
+        </div>
+        <ul class="mt-8 flex gap-3" aria-label="Social media">
+          {
+            socials.map((social) => (
+              <li>
+                <a
+                  href={social.href}
+                  aria-label={social.label}
+                  class="inline-flex h-11 w-11 items-center justify-center rounded-full ring-1 ring-white/25 transition hover:bg-white/10 hover:ring-gold-400"
+                >
+                  <Icon name={social.name} class="h-5 w-5" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-white/15 pt-6">
+      <p class="text-xs text-white/60">&copy; {year} Lead At Your Peak. All rights reserved.</p>
+    </div>
+  </Container>
+</footer>

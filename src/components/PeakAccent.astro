@@ -1,0 +1,89 @@
+---
+/**
+ * The signature brand motif: a thin ascending ridge-line in the logo's
+ * gold gradient, echoing the LAYP mountain silhouette without being a
+ * literal mountain.
+ *
+ * - underline: small flourish under a heading
+ * - divider: full-width rule between content blocks
+ * - watermark: large, faint background ridge for section corners
+ */
+interface Props {
+  variant?: 'underline' | 'divider' | 'watermark';
+  class?: string;
+}
+
+const { variant = 'underline', class: className = '' } = Astro.props;
+const uid = `pg-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+{
+  variant === 'underline' && (
+    <svg viewBox="0 0 120 16" fill="none" aria-hidden="true" class:list={['h-3 w-24', className]}>
+      <defs>
+        <linearGradient id={uid} x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse">
+          <stop stop-color="var(--color-gold-600)" />
+          <stop offset="1" stop-color="var(--color-gold-200)" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M2 14 30 4l10 6 14-8 16 10 16-5 32 7"
+        stroke={`url(#${uid})`}
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  )
+}
+
+{
+  variant === 'divider' && (
+    <svg
+      viewBox="0 0 1200 24"
+      fill="none"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      class:list={['h-4 w-full', className]}
+    >
+      <defs>
+        <linearGradient id={uid} x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+          <stop stop-color="var(--color-gold-600)" stop-opacity="0" />
+          <stop offset="0.3" stop-color="var(--color-gold-600)" />
+          <stop offset="0.7" stop-color="var(--color-gold-200)" />
+          <stop offset="1" stop-color="var(--color-gold-200)" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M0 20h420l80-14 50 9 70-13 90 15 60-8 430 11"
+        stroke={`url(#${uid})`}
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+    </svg>
+  )
+}
+
+{
+  variant === 'watermark' && (
+    <svg
+      viewBox="0 0 400 220"
+      fill="none"
+      aria-hidden="true"
+      class:list={['pointer-events-none select-none', className]}
+    >
+      <defs>
+        <linearGradient id={uid} x1="0" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse">
+          <stop stop-color="var(--color-gold-600)" />
+          <stop offset="1" stop-color="var(--color-gold-200)" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M0 210 100 60l45 55 55-95 70 105 40-30 90 115"
+        stroke={`url(#${uid})`}
+        stroke-width="2"
+        stroke-linejoin="round"
+      />
+    </svg>
+  )
+}

@@ -1,0 +1,24 @@
+---
+/**
+ * Page section with spec spacing (80px desktop / 40px mobile) and a
+ * surface colour. `navy` flips text light for dark feature sections.
+ */
+interface Props {
+  id?: string;
+  bg?: 'white' | 'cream' | 'beige' | 'navy';
+  class?: string;
+}
+
+const { id, bg = 'cream', class: className = '' } = Astro.props;
+
+const surfaces = {
+  white: 'bg-white',
+  cream: 'bg-cream',
+  beige: 'bg-beige',
+  navy: 'bg-navy-800 text-white',
+};
+---
+
+<section {id} class:list={[surfaces[bg], 'py-10 md:py-20', className]}>
+  <slot />
+</section>

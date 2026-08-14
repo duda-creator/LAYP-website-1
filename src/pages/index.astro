@@ -1,13 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/Container.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import PeakAccent from '../components/PeakAccent.astro';
+import Section from '../components/Section.astro';
 ---
 
 <BaseLayout
   title="Lead At Your Peak | Leadership Development & Executive Coaching"
   description="We help leaders and teams in high-pressure environments elevate presence and performance to lead with greater influence and impact."
 >
-  <main class="flex min-h-screen items-center justify-center">
-    <h1 class="font-heading text-4xl font-bold">Lead At Your Peak</h1>
-    <!-- Phase 3 replaces this placeholder with the full homepage sections -->
+  <Header slot="header" />
+
+  <main>
+    <Section bg="white" class="min-h-[60vh]">
+      <Container class="flex flex-col items-start justify-center gap-4 py-16">
+        <p class="eyebrow">Coming in Phase 3</p>
+        <h1 class="text-4xl md:text-5xl">Lead At Your Peak</h1>
+        <PeakAccent />
+        <!-- Phase 3 replaces this placeholder with the full homepage sections -->
+      </Container>
+    </Section>
   </main>
+
+  <Footer slot="footer" />
 </BaseLayout>

@@ -1,0 +1,110 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo-small.png';
+import Button from './Button.astro';
+import Container from './Container.astro';
+import Icon from './Icon.astro';
+
+const services = [
+  { label: 'Leadership Development Training', href: '/services#leadership-development-training' },
+  { label: 'Executive Coaching', href: '/services#executive-coaching' },
+  { label: 'High-performance Simulation', href: '/services#high-performance-simulation' },
+  { label: 'Bespoke Learning Journeys', href: '/services#bespoke-learning-journeys' },
+];
+
+const navLink =
+  'font-heading text-sm font-semibold tracking-wide text-white/90 transition hover:text-gold-200';
+---
+
+<!-- Header navy = the logo PNG's own background, so the mark sits seamlessly -->
+<header class="sticky top-0 z-50 bg-navy-800 shadow-lg shadow-navy-950/20">
+  <Container class="flex h-16 items-center justify-between gap-6 md:h-20">
+    <a href="/" class="shrink-0" aria-label="Lead At Your Peak — home">
+      <Image src={logo} alt="Lead At Your Peak" class="h-11 w-auto md:h-12" densities={[1, 2]} />
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Main">
+      <div class="group relative">
+        <button
+          type="button"
+          class:list={[navLink, 'inline-flex cursor-pointer items-center gap-1.5 py-2']}
+          aria-haspopup="true"
+        >
+          Services
+          <Icon name="chevron-down" class="h-4 w-4 transition group-hover:rotate-180" />
+        </button>
+        <div
+          class="invisible absolute left-1/2 top-full w-72 -translate-x-1/2 translate-y-2 pt-3 opacity-0 transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
+        >
+          <ul class="overflow-hidden rounded-xl bg-white py-2 shadow-xl ring-1 ring-navy-800/10">
+            {
+              services.map((service) => (
+                <li>
+                  <a
+                    href={service.href}
+                    class="block px-5 py-3 text-sm font-medium text-ink transition hover:bg-cream hover:text-navy-800"
+                  >
+                    {service.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+      <a href="/about" class={navLink}>About</a>
+      <a href="/contact" class={navLink}>Contact</a>
+      <Button href="/contact" class="min-h-11 px-5 py-2.5 text-sm">Book A Call</Button>
+    </nav>
+
+    <!-- Mobile menu toggle -->
+    <button
+      type="button"
+      id="menu-toggle"
+      class="group -mr-2 inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-lg text-white transition hover:bg-white/10 md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Open menu"
+    >
+      <Icon name="menu" class="h-6 w-6 group-aria-expanded:hidden" />
+      <Icon name="close" class="hidden h-6 w-6 group-aria-expanded:block" />
+    </button>
+  </Container>
+
+  <!-- Mobile menu panel -->
+  <nav id="mobile-menu" class="hidden border-t border-white/10 bg-navy-900 md:hidden" aria-label="Mobile">
+    <Container class="flex flex-col gap-1 py-4">
+      <p class="eyebrow eyebrow--on-dark px-3 pb-1 pt-2">Services</p>
+      {
+        services.map((service) => (
+          <a
+            href={service.href}
+            class="rounded-lg px-3 py-3 font-medium text-white/90 transition hover:bg-white/10"
+          >
+            {service.label}
+          </a>
+        ))
+      }
+      <a href="/about" class="rounded-lg px-3 py-3 font-medium text-white/90 transition hover:bg-white/10">
+        About
+      </a>
+      <a href="/contact" class="rounded-lg px-3 py-3 font-medium text-white/90 transition hover:bg-white/10">
+        Contact
+      </a>
+      <Button href="/contact" class="mt-3">Book A Call</Button>
+    </Container>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    menu?.classList.toggle('hidden', open);
+  });
+</script>

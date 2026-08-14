@@ -1,0 +1,20 @@
+---
+/**
+ * Premium card base for services and testimonials.
+ * Subtle elevation at rest, lifts on hover per spec.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div
+  class:list={[
+    'rounded-2xl bg-white p-8 shadow-sm ring-1 ring-navy-800/10 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-navy-800/10',
+    className,
+  ]}
+>
+  <slot />
+</div>

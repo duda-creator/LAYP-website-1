@@ -1,0 +1,180 @@
+---
+/**
+ * Internal design-system gallery for browser review.
+ * TODO: remove (or exclude from build/sitemap) before launch.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Container from '../components/Container.astro';
+import FadeIn from '../components/FadeIn.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Icon from '../components/Icon.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
+import PeakAccent from '../components/PeakAccent.astro';
+import Section from '../components/Section.astro';
+
+const swatches = [
+  ['navy-950', 'bg-navy-950'],
+  ['navy-900', 'bg-navy-900'],
+  ['navy-800 · primary', 'bg-navy-800'],
+  ['navy-600', 'bg-navy-600'],
+  ['navy-100', 'bg-navy-100'],
+  ['accent-500 · CTA', 'bg-accent-500'],
+  ['accent-600', 'bg-accent-600'],
+  ['gold-400', 'bg-gold-400'],
+  ['gold-200', 'bg-gold-200'],
+  ['gold-600', 'bg-gold-600'],
+  ['cream', 'bg-cream'],
+  ['beige', 'bg-beige'],
+];
+
+const serviceIcons = ['training', 'coaching', 'simulation', 'journeys'] as const;
+const uiIcons = [
+  'peak',
+  'linkedin',
+  'youtube',
+  'instagram',
+  'menu',
+  'close',
+  'chevron-down',
+  'arrow-right',
+  'check',
+  'phone',
+  'mail',
+  'calendar',
+] as const;
+---
+
+<BaseLayout title="Styleguide — Lead At Your Peak" description="Internal design-system reference.">
+  <Header slot="header" />
+
+  <main>
+    <Section bg="white">
+      <Container>
+        <p class="eyebrow">Design system</p>
+        <h1 class="mt-2 text-4xl md:text-5xl">Styleguide</h1>
+        <PeakAccent class="mt-4" />
+        <p class="mt-4 max-w-2xl text-ink/75">
+          Internal reference for every Lead At Your Peak component and token. Not linked from the
+          site.
+        </p>
+      </Container>
+    </Section>
+
+    <Section bg="cream">
+      <Container>
+        <h2 class="text-2xl">Colour</h2>
+        <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-6">
+          {
+            swatches.map(([name, cls]) => (
+              <div>
+                <div class:list={[cls, 'h-16 rounded-lg ring-1 ring-navy-800/10']} />
+                <p class="mt-1.5 text-xs font-medium text-ink/70">{name}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <h2 class="mt-14 text-2xl">Type scale</h2>
+        <div class="mt-6 space-y-4">
+          <h1 class="text-5xl">H1 — Lead At Your Peak</h1>
+          <h2 class="text-3xl">H2 — Transform pressure into performance</h2>
+          <h3 class="text-xl">H3 — The climb, in stages</h3>
+          <p class="max-w-2xl text-base text-ink/80">
+            Body — We partner with purpose-driven and ambitious organisations to develop
+            high-performing leaders who lead with presence, influence, and clarity.
+          </p>
+          <p class="eyebrow">Eyebrow — How we partner with you</p>
+          <p class="gold-gradient-text font-heading text-3xl font-bold">Gold gradient display</p>
+        </div>
+      </Container>
+    </Section>
+
+    <Section bg="white">
+      <Container>
+        <h2 class="text-2xl">Buttons</h2>
+        <div class="mt-6 flex flex-wrap items-center gap-4">
+          <Button>Book A Discovery Call</Button>
+          <Button variant="secondary">Learn More</Button>
+          <Button href="#" variant="primary">Link as button <Icon name="arrow-right" class="h-4 w-4" /></Button>
+        </div>
+        <div class="mt-6 rounded-2xl bg-navy-800 p-8">
+          <div class="flex flex-wrap items-center gap-4">
+            <Button>Primary on navy</Button>
+            <Button variant="outline-light">Outline light</Button>
+          </div>
+        </div>
+      </Container>
+    </Section>
+
+    <Section bg="beige">
+      <Container>
+        <h2 class="text-2xl">Cards & icons</h2>
+        <div class="mt-6 grid gap-6 sm:grid-cols-2">
+          {
+            serviceIcons.map((name) => (
+              <Card>
+                <span class="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-navy-800/5 text-navy-800">
+                  <Icon name={name} class="h-7 w-7" />
+                </span>
+                <h3 class="mt-4 text-lg capitalize">{name}</h3>
+                <p class="mt-2 text-sm text-ink/70">Service card base with hover elevation.</p>
+              </Card>
+            ))
+          }
+        </div>
+        <div class="mt-8 flex flex-wrap gap-5 text-navy-800">
+          {uiIcons.map((name) => <Icon name={name} class="h-6 w-6" />)}
+        </div>
+      </Container>
+    </Section>
+
+    <Section bg="white">
+      <Container>
+        <h2 class="text-2xl">Peak accents</h2>
+        <div class="mt-6 space-y-8">
+          <PeakAccent variant="underline" />
+          <PeakAccent variant="divider" />
+          <div class="relative h-56 overflow-hidden rounded-2xl bg-navy-800">
+            <PeakAccent variant="watermark" class="absolute -right-8 bottom-0 h-52 w-auto opacity-30" />
+            <p class="eyebrow eyebrow--on-dark p-8">Watermark on navy</p>
+          </div>
+        </div>
+      </Container>
+    </Section>
+
+    <Section bg="cream">
+      <Container>
+        <h2 class="text-2xl">Forms</h2>
+        <div class="mt-6 max-w-2xl">
+          <ContactForm />
+        </div>
+        <div class="mt-14 rounded-2xl bg-gradient-to-br from-beige via-cream to-navy-100 p-8">
+          <NewsletterForm />
+        </div>
+      </Container>
+    </Section>
+
+    <Section bg="white">
+      <Container>
+        <h2 class="text-2xl">Fade-in on scroll</h2>
+        <div class="mt-6 grid gap-6 sm:grid-cols-3">
+          {
+            [0, 120, 240].map((delay) => (
+              <FadeIn delay={delay}>
+                <Card>
+                  <p class="text-sm text-ink/70">Staggered by {delay}ms</p>
+                </Card>
+              </FadeIn>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+  </main>
+
+  <Footer slot="footer" />
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+/**
+ * Renders an <a> when `href` is given, otherwise a <button>.
+ * - primary: conversion CTA — the only place orange appears
+ * - secondary: accent outline (spec)
+ * - outline-light: for navy surfaces
+ */
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'outline-light';
+  type?: 'button' | 'submit';
+  class?: string;
+}
+
+const { href, variant = 'primary', type = 'button', class: className = '' } = Astro.props;
+
+const base =
+  'inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-lg px-6 py-3 text-center font-heading text-base font-semibold transition hover:-translate-y-0.5 active:translate-y-0';
+
+const variants = {
+  primary:
+    'bg-accent-500 text-white shadow-md shadow-accent-600/30 hover:brightness-105 hover:shadow-lg hover:shadow-accent-600/35',
+  secondary: 'border-2 border-accent-500 text-accent-600 hover:bg-accent-500/10',
+  'outline-light': 'border-2 border-gold-400/70 text-white hover:border-gold-200 hover:bg-white/5',
+};
+
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag href={href} type={href ? undefined : type} class:list={[base, variants[variant], className]}>
+  <slot />
+</Tag>
