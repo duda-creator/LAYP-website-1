@@ -1,0 +1,28 @@
+/* Self-hosted variable fonts (no external font requests) */
+@import '@fontsource-variable/montserrat';
+@import '@fontsource-variable/inter';
+
+@import 'tailwindcss';
+
+/*
+ * Design tokens — Phase 2 will extend this @theme block with the full
+ * colour palette, spacing, and typography scale from CLAUDE.md.
+ */
+@theme {
+  --font-heading: 'Montserrat Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem; /* body minimum 16px per spec */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
