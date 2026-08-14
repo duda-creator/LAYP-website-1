@@ -1,0 +1,208 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Container from '../components/Container.astro';
+import FadeIn from '../components/FadeIn.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Icon from '../components/Icon.astro';
+import PeakAccent from '../components/PeakAccent.astro';
+import Section from '../components/Section.astro';
+
+import trainingPhoto from '../assets/images/leadership-training.jpg';
+import coachingPhoto from '../assets/images/executive-coaching.jpg';
+import simulationPhoto from '../assets/images/team-effectiveness.jpg';
+import journeysPhoto from '../assets/images/unilever-event-drive-performance.jpg';
+
+const services = [
+  {
+    id: 'leadership-development-training',
+    icon: 'training',
+    title: 'Leadership Development Training',
+    photo: trainingPhoto,
+    alt: 'Karolina Gwinner facilitating a lively training discussion among corporate leaders',
+    description:
+      'Interactive, science-backed training that turns insight into behaviour. Grounded in human performance science and the A.L.I.G.N.™ framework, each programme equips leaders with practical tools they can apply the moment they walk back into the room.',
+    who: 'Mid-to-senior leaders and leadership teams who need to communicate, influence, and perform in complex, high-pressure environments.',
+    included: [
+      'Facilitated in-person or virtual workshops',
+      'Practical tools and strategies, not just theory',
+      'Real-play practice built around your context',
+      'Post-programme embedding support',
+    ],
+    outcomes: [
+      'Stronger presence and gravitas in high-stakes moments',
+      'Ideas that land — with boards, clients, and teams',
+      'Behaviour shifts that stick beyond the workshop',
+    ],
+  },
+  {
+    id: 'executive-coaching',
+    icon: 'coaching',
+    title: 'Executive Coaching',
+    photo: coachingPhoto,
+    alt: 'Karolina Gwinner in a one-to-one executive coaching conversation',
+    description:
+      'A confidential one-to-one partnership for leaders ready to elevate how they show up. Coaching draws on the P.E.A.K.S.™ framework to build the energy, focus, and resilience it takes to perform consistently — without running on fumes.',
+    who: 'Executives and senior leaders stepping up in scope, navigating change, or determined to be seen as the strategic leaders they are.',
+    included: [
+      'Structured one-to-one coaching engagements',
+      'Clear goals aligned with your stakeholders',
+      'Evidence-based tools between sessions',
+      'Progress reviews against agreed outcomes',
+    ],
+    outcomes: [
+      'Visibility, credibility, and executive presence',
+      'Sustainable energy and a rhythm that lasts',
+      'Confident leadership when the stakes are high',
+    ],
+  },
+  {
+    id: 'high-performance-simulation',
+    icon: 'simulation',
+    title: 'High-performance Simulation',
+    photo: simulationPhoto,
+    alt: 'A small leadership team working through a facilitated scenario together',
+    description:
+      'Immersive scenarios that compress years of leadership pressure into hours of practice. Leaders rehearse the conversations, decisions, and moments that define them — in a safe environment with expert feedback, before the stakes are real.',
+    who: 'Leadership teams and high-potential cohorts preparing for defining moments: transformations, critical negotiations, and leading under pressure.',
+    included: [
+      'Realistic, high-stakes scenario design',
+      'Live facilitation and expert observation',
+      'Structured debriefs and actionable feedback',
+      'Individual and team development insights',
+    ],
+    outcomes: [
+      'Composure and clarity under real pressure',
+      'Sharper decisions when it counts',
+      'Teams that trust each other in the hard moments',
+    ],
+  },
+  {
+    id: 'bespoke-learning-journeys',
+    icon: 'journeys',
+    title: 'Bespoke Learning Journeys',
+    photo: journeysPhoto,
+    alt: 'A cohort of leaders gathered outside a modern corporate campus during a learning programme',
+    description:
+      'Multi-stage development programmes designed around your organisation — not off the shelf. We combine training, coaching, simulation, and embedding activities into a journey that compounds, so development becomes lasting capability.',
+    who: 'HR and L&D leaders building leadership capability at scale, from emerging talent cohorts to senior leadership teams.',
+    included: [
+      'Co-designed programme architecture',
+      'Blended formats: workshops, coaching, simulation',
+      'Measurement aligned to business outcomes',
+      'Ongoing partnership and iteration',
+    ],
+    outcomes: [
+      'A leadership bench that grows with the business',
+      'Consistent leadership language and habits',
+      'Development that shows up in results, not just feedback forms',
+    ],
+  },
+] as const;
+---
+
+<BaseLayout
+  title="Services | Lead At Your Peak"
+  description="Leadership development training, executive coaching, high-performance simulation, and bespoke learning journeys for leaders in high-pressure environments."
+>
+  <Header slot="header" />
+
+  <main>
+    <!-- Hero -->
+    <Section bg="navy" class="relative overflow-hidden">
+      <PeakAccent variant="watermark" class="absolute -right-10 bottom-0 h-64 w-auto opacity-25" />
+      <Container class="relative max-w-3xl text-center">
+        <p class="eyebrow eyebrow--on-dark">Our services</p>
+        <h1 class="mt-4 text-4xl md:text-5xl">Elevate Your Leadership</h1>
+        <div class="mt-6 flex justify-center"><PeakAccent /></div>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/85">
+          Four ways we partner with you — each one built on human performance science and designed
+          to turn pressure into performance.
+        </p>
+      </Container>
+    </Section>
+
+    <!-- Service sections, alternating image/text -->
+    {
+      services.map((service, index) => (
+        <Section id={service.id} bg={index % 2 === 0 ? 'white' : 'cream'}>
+          <Container>
+            <div class="grid items-center gap-12 lg:grid-cols-2">
+              <FadeIn class:list={[index % 2 === 1 && 'lg:order-2']}>
+                <Image
+                  src={service.photo}
+                  alt={service.alt}
+                  class="aspect-[4/3] w-full rounded-2xl object-cover shadow-xl shadow-navy-800/15"
+                  widths={[480, 768, 1200]}
+                  sizes="(min-width: 1024px) 560px, 90vw"
+                />
+              </FadeIn>
+              <FadeIn delay={100}>
+                <span class="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-navy-800/5 text-navy-800">
+                  <Icon name={service.icon} class="h-7 w-7" />
+                </span>
+                <h2 class="mt-5 text-3xl">{service.title}</h2>
+                <p class="mt-4 leading-relaxed text-ink/80">{service.description}</p>
+
+                <h3 class="eyebrow mt-7">Who it's for</h3>
+                <p class="mt-2 leading-relaxed text-ink/80">{service.who}</p>
+
+                <div class="mt-7 grid gap-7 sm:grid-cols-2">
+                  <div>
+                    <h3 class="eyebrow">What's included</h3>
+                    <ul class="mt-3 space-y-2.5">
+                      {service.included.map((item) => (
+                        <li class="flex items-start gap-2.5 text-sm leading-relaxed text-ink/80">
+                          <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 class="eyebrow">Outcomes</h3>
+                    <ul class="mt-3 space-y-2.5">
+                      {service.outcomes.map((item) => (
+                        <li class="flex items-start gap-2.5 text-sm leading-relaxed text-ink/80">
+                          <Icon name="peak" class="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="mt-8">
+                  <Button href="/contact">Contact us</Button>
+                </div>
+              </FadeIn>
+            </div>
+          </Container>
+        </Section>
+      ))
+    }
+
+    <!-- Booking -->
+    <Section bg="beige">
+      <Container class="text-center">
+        <h2 class="text-3xl">Not sure where to start?</h2>
+        <p class="mx-auto mt-4 max-w-xl leading-relaxed text-ink/80">
+          Book a discovery call and we'll map the right starting point for you or your organisation
+          — no pressure, no obligation.
+        </p>
+        <div class="mx-auto mt-8 max-w-2xl rounded-2xl border-2 border-dashed border-navy-800/20 bg-white/60 p-10">
+          <!-- TODO: replace with the zcal booking embed once the link is available -->
+          <Icon name="calendar" class="mx-auto h-8 w-8 text-navy-800/50" />
+          <p class="mt-3 text-sm text-ink/60">Calendar booking embed (zcal) coming soon.</p>
+          <div class="mt-6">
+            <Button href="/contact">Book A Discovery Call</Button>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  </main>
+
+  <Footer slot="footer" />
+</BaseLayout>

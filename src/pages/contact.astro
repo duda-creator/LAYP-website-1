@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Container from '../components/Container.astro';
+import FadeIn from '../components/FadeIn.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Icon from '../components/Icon.astro';
+import PeakAccent from '../components/PeakAccent.astro';
+import Section from '../components/Section.astro';
+---
+
+<BaseLayout
+  title="Contact | Lead At Your Peak"
+  description="Get in touch or book a discovery call to explore leadership development training, executive coaching, and bespoke programmes for your organisation."
+>
+  <Header slot="header" />
+
+  <main>
+    <!-- Hero -->
+    <Section bg="navy" class="relative overflow-hidden">
+      <PeakAccent variant="watermark" class="absolute -right-10 bottom-0 h-64 w-auto opacity-25" />
+      <Container class="relative max-w-3xl text-center">
+        <p class="eyebrow eyebrow--on-dark">Contact</p>
+        <h1 class="mt-4 text-4xl md:text-5xl">Let's Start Your Ascent</h1>
+        <div class="mt-6 flex justify-center"><PeakAccent /></div>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/85">
+          Tell us where you are and where you want to be — we'll take it from there.
+        </p>
+      </Container>
+    </Section>
+
+    <!-- Form + contact details -->
+    <Section bg="cream" id="message">
+      <Container>
+        <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
+          <FadeIn>
+            <h2 class="text-2xl">Send us a message</h2>
+            <p class="mt-3 max-w-lg leading-relaxed text-ink/75">
+              Share a little about you and your goals. We reply to every message within one
+              business day.
+            </p>
+            <div class="mt-8">
+              <ContactForm />
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={150}>
+            <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-navy-800/10">
+              <h2 class="text-xl">Prefer to talk?</h2>
+              <ul class="mt-6 space-y-5">
+                <li class="flex items-start gap-4">
+                  <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-navy-800/5 text-navy-800">
+                    <Icon name="phone" class="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p class="font-heading text-sm font-bold">Phone</p>
+                    <!-- TODO: replace with the real phone number -->
+                    <p class="mt-1 text-sm text-ink/60">TODO: phone number</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-navy-800/5 text-navy-800">
+                    <Icon name="mail" class="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p class="font-heading text-sm font-bold">Email</p>
+                    <!-- TODO: replace with the real contact email -->
+                    <p class="mt-1 text-sm text-ink/60">TODO: contact email</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-navy-800/5 text-navy-800">
+                    <Icon name="linkedin" class="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p class="font-heading text-sm font-bold">LinkedIn</p>
+                    <!-- TODO: replace with the real LinkedIn profile URL -->
+                    <p class="mt-1 text-sm text-ink/60">TODO: LinkedIn profile</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div id="book" class="mt-8 rounded-2xl border-2 border-dashed border-navy-800/20 bg-white/60 p-8 text-center">
+              <!-- TODO: replace with the zcal booking embed once the link is available -->
+              <Icon name="calendar" class="mx-auto h-8 w-8 text-navy-800/50" />
+              <h2 class="mt-3 text-lg">Book a discovery call</h2>
+              <p class="mt-2 text-sm text-ink/60">
+                Calendar booking (zcal) coming soon. Until then, send us a message and we'll
+                arrange a time.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </Container>
+    </Section>
+  </main>
+
+  <Footer slot="footer" />
+</BaseLayout>

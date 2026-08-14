@@ -58,6 +58,11 @@
     }
   }
 
+  /* Anchor targets land below the sticky header */
+  [id] {
+    scroll-margin-top: 6.5rem;
+  }
+
   body {
     font-family: var(--font-body);
     font-size: 1rem; /* body minimum 16px per spec */
