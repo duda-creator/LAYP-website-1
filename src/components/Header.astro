@@ -25,6 +25,7 @@ const navLink =
 
     <!-- Desktop navigation -->
     <nav class="hidden items-center gap-8 md:flex" aria-label="Main">
+      <a href="/" class={navLink}>Home</a>
       <div class="group relative">
         <button
           type="button"
@@ -75,17 +76,34 @@ const navLink =
   <!-- Mobile menu panel -->
   <nav id="mobile-menu" class="hidden border-t border-white/10 bg-navy-900 md:hidden" aria-label="Mobile">
     <Container class="flex flex-col gap-1 py-4">
-      <p class="eyebrow eyebrow--on-dark px-3 pb-1 pt-2">Services</p>
-      {
-        services.map((service) => (
-          <a
-            href={service.href}
-            class="rounded-lg px-3 py-3 font-medium text-white/90 transition hover:bg-white/10"
-          >
-            {service.label}
-          </a>
-        ))
-      }
+      <a href="/" class="rounded-lg px-3 py-3 font-medium text-white/90 transition hover:bg-white/10">
+        Home
+      </a>
+      
+      <!-- Services Submenu -->
+      <button
+        type="button"
+        id="services-toggle"
+        class="flex w-full items-center justify-between rounded-lg px-3 py-3 font-medium text-white/90 transition hover:bg-white/10"
+        aria-expanded="false"
+        aria-controls="services-submenu"
+      >
+        Services
+        <Icon name="chevron-down" class="h-4 w-4 transition" id="services-icon" />
+      </button>
+      <div id="services-submenu" class="hidden flex flex-col gap-1">
+        {
+          services.map((service) => (
+            <a
+              href={service.href}
+              class="rounded-lg px-6 py-2.5 text-sm font-medium text-white/75 transition hover:bg-white/10 hover:text-white"
+            >
+              {service.label}
+            </a>
+          ))
+        }
+      </div>
+
       <a href="/about" class="rounded-lg px-3 py-3 font-medium text-white/90 transition hover:bg-white/10">
         About
       </a>
@@ -100,11 +118,21 @@ const navLink =
 <script>
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('mobile-menu');
+  const servicesToggle = document.getElementById('services-toggle');
+  const servicesSubmenu = document.getElementById('services-submenu');
+  const servicesIcon = document.getElementById('services-icon');
 
   toggle?.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!open));
     toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
     menu?.classList.toggle('hidden', open);
+  });
+
+  servicesToggle?.addEventListener('click', () => {
+    const open = servicesToggle.getAttribute('aria-expanded') === 'true';
+    servicesToggle.setAttribute('aria-expanded', String(!open));
+    servicesSubmenu?.classList.toggle('hidden', open);
+    servicesIcon?.classList.toggle('rotate-180', !open);
   });
 </script>
