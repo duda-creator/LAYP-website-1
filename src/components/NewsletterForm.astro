@@ -12,8 +12,7 @@ const field =
   novalidate
   class="mx-auto max-w-2xl"
 >
-  <!-- TODO: replace with the real Web3Forms access key -->
-  <input type="hidden" name="access_key" value="TODO_WEB3FORMS_ACCESS_KEY" />
+  <input type="hidden" name="access_key" value="13507d48-81e6-4c6a-9906-658724b6078c" />
   <input type="hidden" name="subject" value="New newsletter subscriber — leadatyourpeak.com" />
   <input type="hidden" name="from_name" value="Lead At Your Peak website" />
   <!-- Honeypot — hidden from humans, tempting for bots -->
@@ -59,7 +58,8 @@ const field =
     <Button type="submit">Subscribe</Button>
   </div>
 
-  <!-- TODO: add reCAPTCHA widget here once a site key is available -->
+  <!-- Invisible hCaptcha — only challenges suspicious traffic, verified server-side by Web3Forms -->
+  <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" data-size="invisible"></div>
 
   <p data-form-status class="mt-3 hidden text-sm font-medium" role="status" aria-live="polite"></p>
 </form>
