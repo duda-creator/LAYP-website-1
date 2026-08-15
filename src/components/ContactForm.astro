@@ -1,57 +1,38 @@
 ---
-import Button from './Button.astro';
-
-const field =
-  'w-full rounded-lg border border-navy-800/20 bg-white px-4 py-3 text-base text-ink placeholder:text-ink/40 transition focus:border-navy-600 focus:outline-none focus:ring-2 focus:ring-navy-600/25';
-const label = 'mb-1.5 block text-sm font-semibold text-ink';
 ---
 
-<form
-  data-w3form
-  data-success-message="Thank you — we'll be in touch within one business day."
-  data-error-message="Your message couldn't be sent. Please try again or email us directly."
-  novalidate
-  class="space-y-5"
->
-  <input type="hidden" name="access_key" value="3a6e6d96-4727-4bda-b70a-ff4cd2dc227f" />
-  <input type="hidden" name="subject" value="New contact enquiry — leadatyourpeak.com" />
-  <input type="hidden" name="from_name" value="Lead At Your Peak website" />
-  <!-- Honeypot — hidden from humans, tempting for bots -->
-  <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-  <div class="grid gap-5 sm:grid-cols-2">
-    <div>
-      <label for="contact-name" class={label}>Name</label>
-      <input id="contact-name" name="name" type="text" required autocomplete="name" class={field} />
-    </div>
-    <div>
-      <label for="contact-email" class={label}>Email</label>
-      <input id="contact-email" name="email" type="email" required autocomplete="email" class={field} />
-    </div>
-    <div>
-      <label for="contact-company" class={label}>Company</label>
-      <input id="contact-company" name="company" type="text" autocomplete="organization" class={field} />
-    </div>
-    <div>
-      <label for="contact-role" class={label}>Role</label>
-      <input id="contact-role" name="role" type="text" autocomplete="organization-title" class={field} />
-    </div>
-  </div>
-
-  <div>
-    <label for="contact-message" class={label}>Message</label>
-    <textarea id="contact-message" name="message" rows="5" required class={field}></textarea>
-  </div>
-
-  <!-- Invisible hCaptcha — only challenges suspicious traffic, verified server-side by Web3Forms -->
-  <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" data-size="invisible"></div>
-
-  <div class="flex flex-wrap items-center gap-4">
-    <Button type="submit">Send message</Button>
-    <p data-form-status class="hidden text-sm font-medium" role="status" aria-live="polite"></p>
-  </div>
-</form>
+<iframe
+  data-tally-src="https://tally.so/embed/aQJpzE?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+  loading="lazy"
+  width="100%"
+  height="500"
+  title="Contact form"
+  class="block w-full"
+></iframe>
 
 <script>
-  import '../scripts/web3forms';
+  // Tally's universal embed loader — fills in iframe src and enables auto-resize once loaded.
+  const src = 'https://tally.so/widgets/embed.js';
+  const load = () => {
+    // @ts-expect-error — Tally attaches itself to window at runtime, no published types
+    if (typeof window.Tally !== 'undefined') {
+      // @ts-expect-error — see above
+      window.Tally.loadEmbeds();
+      return;
+    }
+    document.querySelectorAll<HTMLIFrameElement>('iframe[data-tally-src]:not([src])').forEach((el) => {
+      el.src = el.dataset.tallySrc ?? '';
+    });
+  };
+
+  if (document.querySelector(`script[src="${src}"]`) === null) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = load;
+    script.onerror = load;
+    document.body.appendChild(script);
+  } else {
+    load();
+  }
 </script>
+
