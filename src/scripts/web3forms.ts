@@ -25,7 +25,9 @@ function loadHcaptcha(): Promise<void> {
     (window as unknown as Record<string, () => void>)[callbackName] = () => resolve();
 
     const script = document.createElement('script');
-    script.src = `https://js.hcaptcha.com/1/api.js?render=explicit&onload=${callbackName}`;
+    // recaptchacompat=off: without this, hCaptcha also injects a g-recaptcha-response field,
+    // which makes Web3Forms think reCAPTCHA (a Pro feature) is being used and reject the submission.
+    script.src = `https://js.hcaptcha.com/1/api.js?render=explicit&onload=${callbackName}&recaptchacompat=off`;
     script.async = true;
     script.defer = true;
     script.addEventListener('error', () => reject(new Error('hCaptcha script failed to load')));
