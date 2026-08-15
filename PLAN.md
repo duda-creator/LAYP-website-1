@@ -29,7 +29,7 @@ Decisions confirmed with the user:
 ## Phase 2 — Design system (before any pages)
 
 Define tokens in `global.css` via Tailwind v4 `@theme`:
-- Colors: primary `#1a4578`, accent `#ff6b35`, gold `#d4af37`, cream `#f6f5f2`, beige `#e3e1dc`
+- Colors: primary `#1a4578`, accent `#ca0036`, gold `#d4af37`, cream `#f6f5f2`, beige `#e3e1dc`
 - Fonts: Montserrat (headings, bold), Inter (body, ≥16px); strong H1/H2/H3 hierarchy
 - Container max-width 1200px; section padding 80px desktop / 40px mobile; 0.3s ease transitions
 
