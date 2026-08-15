@@ -202,7 +202,7 @@ chosen.
 ### Colour Scheme
 
 - **Primary:** Dark blue (`#1a4578`)
-- **Accent:** Vibrant orange (`#ff6b35`)
+- **Accent:** Deep red (`#ca0036`)
 - **Metallic accent:** Gold (`#d4af37`) for premium touches
 - **Neutrals:** Cream (`#f6f5f2`) and beige (`#e3e1dc`)
 - Use generous white space throughout.

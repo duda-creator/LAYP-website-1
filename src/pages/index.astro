@@ -184,22 +184,36 @@ const challenges = [
           <p class="mt-4 text-white/75">Discover what the clients think about our services</p>
         </div>
         <div class="mt-12 grid gap-6 md:grid-cols-2">
-          <!-- TODO: replace both cards with real client testimonials (quote, name, title, company, headshot) -->
           {
-            [1, 2].map(() => (
+            [
+              {
+                quote:
+                  "Recently, I attended a workshop facilitated by Karolina. She brought great energy and a strong knowledge boost to the session. The training was a well-balanced blend of clearly presented theory and experience sharing, which made it highly practical, easy to follow, and unique. I recommend Karolina’s programmes to anyone who would like to explore and strengthen their leadership skills.",
+                title: "Director of Reinsurance Accounting Operations",
+                company: "Munich Re",
+                initials: "MR",
+              },
+              {
+                quote:
+                  "I attended a workshop that Karolina ran and found her very personable and energising. Her enthusiasm definitely empowered me to take action. She gave us some useful take-away tips that I found very easy to implement. I would definitely attend another of Karolina's sessions and recommend her as an inspiring, engaging and patient trainer with the passion to help and support people to perform better.",
+                title: "Human Resources Director",
+                company: "WTW (Willis Towers Watson)",
+                initials: "WTW",
+              },
+            ].map((testimonial) => (
               <FadeIn>
                 <Card class="h-full bg-white/95">
                   <PeakAccent variant="underline" class="h-3 w-20" />
                   <p class="mt-4 italic leading-relaxed text-ink/70">
-                    TODO: Client testimonial quote to be supplied.
+                    “{testimonial.quote}”
                   </p>
                   <div class="mt-6 flex items-center gap-4">
                     <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-navy-100 text-navy-800">
-                      <Icon name="peak" class="h-5 w-5" />
+                      <span class="text-xs font-bold">{testimonial.initials}</span>
                     </span>
                     <div>
-                      <p class="font-heading text-sm font-bold text-ink">TODO: Name</p>
-                      <p class="text-sm text-ink/60">TODO: Title, Company</p>
+                      <p class="font-heading text-sm font-bold text-ink">{testimonial.title}</p>
+                      <p class="text-sm text-ink/60">{testimonial.company}</p>
                     </div>
                   </div>
                 </Card>
