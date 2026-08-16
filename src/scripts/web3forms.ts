@@ -62,13 +62,17 @@ forms.forEach((form) => {
   const status = form.querySelector<HTMLElement>('[data-form-status]');
   const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
 
+  // Forms on dark surfaces opt in via [data-status-on-dark] to get lighter status colours
+  const statusColors =
+    'statusOnDark' in form.dataset
+      ? { success: 'text-green-300', error: 'text-red-300', sending: 'text-white/70' }
+      : { success: 'text-green-700', error: 'text-red-700', sending: 'text-ink/60' };
+
   const showStatus = (kind: 'sending' | 'success' | 'error', message: string) => {
     if (!status) return;
     status.textContent = message;
-    status.classList.remove('hidden', 'text-green-700', 'text-red-700', 'text-ink/60');
-    status.classList.add(
-      kind === 'success' ? 'text-green-700' : kind === 'error' ? 'text-red-700' : 'text-ink/60'
-    );
+    status.classList.remove('hidden', statusColors.success, statusColors.error, statusColors.sending);
+    status.classList.add(statusColors[kind]);
   };
 
   form.addEventListener('submit', async (event) => {

@@ -15,6 +15,7 @@ import Section from '../components/Section.astro';
 import heroPhoto from '../assets/images/hero-session.jpg';
 import founderPhoto from '../assets/images/founder-smiling.jpg';
 import purposePhoto from '../assets/images/purpose-power-pose.jpg';
+import newsletterPhoto from '../assets/images/Newsletter group of leaders smiling.jpg';
 
 const services = [
   {
@@ -254,18 +255,27 @@ const challenges = [
     </Section>
 
     <!-- 6 · Newsletter -->
-    <Section bg="cream" id="newsletter" class="bg-gradient-to-br from-cream via-beige to-navy-100">
-      <Container>
+    <Section bg="navy" id="newsletter" class="relative">
+      <Image
+        src={newsletterPhoto}
+        alt=""
+        class="absolute inset-0 h-full w-full object-cover object-[center_29%]"
+        widths={[768, 1280, 1920]}
+        sizes="100vw"
+      />
+      <!-- Navy scrim keeps the copy and form legible over the photo -->
+      <div class="absolute inset-0 bg-gradient-to-br from-navy-950/85 via-navy-900/75 to-navy-800/60"></div>
+      <Container class="relative">
         <div class="mx-auto max-w-2xl text-center">
-          <p class="eyebrow">Weekly insights</p>
+          <p class="eyebrow eyebrow--on-dark">Weekly insights</p>
           <h2 class="mt-3 text-3xl md:text-4xl">The Edge Every Leader Needs</h2>
-          <p class="mt-4 leading-relaxed text-ink/75">
+          <p class="mt-4 leading-relaxed text-white/80">
             Get our specially curated leadership insights to stay sharp, lead with presence and perform at your peak
             when the stakes are high.
           </p>
         </div>
         <div class="mt-9">
-          <NewsletterForm />
+          <NewsletterForm onDark />
         </div>
       </Container>
     </Section>
