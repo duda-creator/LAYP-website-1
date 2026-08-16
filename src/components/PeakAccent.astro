@@ -1,12 +1,13 @@
 ---
+import { Image } from 'astro:assets';
+import laypSymbol from '../assets/images/layp-symbol.svg';
+
 /**
- * The signature brand motif: a thin ascending ridge-line in the logo's
- * gold gradient, echoing the LAYP mountain silhouette without being a
- * literal mountain.
+ * The signature brand motif: the LAYP mountain mark, resized per placement.
  *
  * - underline: small flourish under a heading
- * - divider: full-width rule between content blocks
- * - watermark: large, faint background ridge for section corners
+ * - divider: full-width gradient rule between content blocks
+ * - watermark: large, faint background mark for section corners
  */
 interface Props {
   variant?: 'underline' | 'divider' | 'watermark';
@@ -18,23 +19,7 @@ const uid = `pg-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
 {
-  variant === 'underline' && (
-    <svg viewBox="0 0 120 16" fill="none" aria-hidden="true" class:list={['h-3 w-24', className]}>
-      <defs>
-        <linearGradient id={uid} x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse">
-          <stop stop-color="var(--color-gold-600)" />
-          <stop offset="1" stop-color="var(--color-gold-200)" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M2 14 30 4l10 6 14-8 16 10 16-5 32 7"
-        stroke={`url(#${uid})`}
-        stroke-width="2.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  )
+  variant === 'underline' && <Image src={laypSymbol} alt="" class:list={['h-6 w-auto', className]} />
 }
 
 {
@@ -55,7 +40,7 @@ const uid = `pg-${Math.random().toString(36).slice(2, 8)}`;
         </linearGradient>
       </defs>
       <path
-        d="M0 20h420l80-14 50 9 70-13 90 15 60-8 430 11"
+        d="M0 20 216 10 420 13 600 6 780 12 984 10 1200 20"
         stroke={`url(#${uid})`}
         stroke-width="1.5"
         stroke-linejoin="round"
@@ -66,24 +51,6 @@ const uid = `pg-${Math.random().toString(36).slice(2, 8)}`;
 
 {
   variant === 'watermark' && (
-    <svg
-      viewBox="0 0 400 220"
-      fill="none"
-      aria-hidden="true"
-      class:list={['pointer-events-none select-none', className]}
-    >
-      <defs>
-        <linearGradient id={uid} x1="0" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse">
-          <stop stop-color="var(--color-gold-600)" />
-          <stop offset="1" stop-color="var(--color-gold-200)" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M0 210 100 60l45 55 55-95 70 105 40-30 90 115"
-        stroke={`url(#${uid})`}
-        stroke-width="2"
-        stroke-linejoin="round"
-      />
-    </svg>
+    <Image src={laypSymbol} alt="" class:list={['pointer-events-none select-none', className]} />
   )
 }

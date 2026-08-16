@@ -132,7 +132,6 @@ const challenges = [
                 widths={[480, 768, 1024]}
                 sizes="(min-width: 1024px) 420px, 90vw"
               />
-              <PeakAccent variant="underline" class="absolute -bottom-5 left-8 h-4 w-32" />
             </div>
           </FadeIn>
         </div>
@@ -203,7 +202,7 @@ const challenges = [
             ].map((testimonial) => (
               <FadeIn>
                 <Card class="h-full bg-white/95">
-                  <PeakAccent variant="underline" class="h-3 w-20" />
+                  <PeakAccent variant="underline" />
                   <p class="mt-4 italic leading-relaxed text-ink/70">
                     “{testimonial.quote}”
                   </p>
