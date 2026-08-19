@@ -12,8 +12,25 @@ const services = [
   { label: 'Bespoke Learning Journeys', href: '/services#bespoke-learning-journeys' },
 ];
 
-const navLink =
-  'font-heading text-sm font-semibold tracking-wide text-white/90 transition hover:text-gold-200';
+const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const isActive = (href: string) =>
+  href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+
+const navLink = (href: string) =>
+  [
+    'font-heading text-sm font-semibold tracking-wide transition',
+    isActive(href)
+      ? 'text-gold-400 underline decoration-2 underline-offset-8'
+      : 'text-white/90 hover:text-gold-200',
+  ].join(' ');
+
+const mobileNavLink = (href: string) =>
+  [
+    'rounded-lg px-3 py-3 font-medium transition hover:bg-white/10',
+    isActive(href)
+      ? 'text-gold-600 underline decoration-2 underline-offset-4'
+      : 'text-white/90 hover:text-gold-200',
+  ].join(' ');
 ---
 
 <!-- Header navy = the logo PNG's own background, so the mark sits seamlessly -->
@@ -25,11 +42,11 @@ const navLink =
 
     <!-- Desktop navigation -->
     <nav class="hidden items-center gap-8 md:flex" aria-label="Main">
-      <a href="/" class={navLink}>Home</a>
+      <a href="/" class={navLink('/')}>Home</a>
       <div class="group relative">
         <button
           type="button"
-          class:list={[navLink, 'inline-flex cursor-pointer items-center gap-1.5 py-2']}
+          class:list={[navLink('/services'), 'inline-flex cursor-pointer items-center gap-1.5 py-2']}
           aria-haspopup="true"
         >
           Services
@@ -54,8 +71,8 @@ const navLink =
           </ul>
         </div>
       </div>
-      <a href="/about" class={navLink}>About</a>
-      <a href="/contact" class={navLink}>Contact</a>
+      <a href="/about" class={navLink('/about')}>About</a>
+      <a href="/contact" class={navLink('/contact')}>Contact</a>
       <Button href="https://zcal.co/karolinagwinner" target="_blank" rel="noopener noreferrer" class="min-h-11 px-5 py-2.5 text-sm">Book A Call</Button>
     </nav>
 
@@ -76,7 +93,7 @@ const navLink =
   <!-- Mobile menu panel -->
   <nav id="mobile-menu" class="hidden border-t border-white/10 bg-navy-900 md:hidden" aria-label="Mobile">
     <Container class="flex flex-col gap-1 py-4">
-      <a href="/" class="rounded-lg px-3 py-3 font-medium text-white/90 transition hover:bg-white/10">
+      <a href="/" class={mobileNavLink('/')}>
         Home
       </a>
       
@@ -84,7 +101,7 @@ const navLink =
       <button
         type="button"
         id="services-toggle"
-        class="flex w-full items-center justify-between rounded-lg px-3 py-3 font-medium text-white/90 transition hover:bg-white/10"
+        class:list={[mobileNavLink('/services'), 'flex w-full items-center justify-between']}
         aria-expanded="false"
         aria-controls="services-submenu"
       >
@@ -104,10 +121,10 @@ const navLink =
         }
       </div>
 
-      <a href="/about" class="rounded-lg px-3 py-3 font-medium text-white/90 transition hover:bg-white/10">
+      <a href="/about" class={mobileNavLink('/about')}>
         About
       </a>
-      <a href="/contact" class="rounded-lg px-3 py-3 font-medium text-white/90 transition hover:bg-white/10">
+      <a href="/contact" class={mobileNavLink('/contact')}>
         Contact
       </a>
       <Button href="https://zcal.co/karolinagwinner" target="_blank" rel="noopener noreferrer" class="mt-3">Book A Call</Button>

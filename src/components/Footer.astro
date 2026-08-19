@@ -15,10 +15,16 @@ const navLinks = [
 
 /* TODO: replace # with the real social profile URLs */
 const socials = [
-  { name: 'linkedin', label: 'LinkedIn', href: '#' },
-  { name: 'youtube', label: 'YouTube', href: '#' },
-  { name: 'instagram', label: 'Instagram', href: '#' },
-] as const;
+  { name: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/karolinagwinner/', target: '_blank', rel: 'noopener noreferrer' },
+  { name: 'youtube', label: 'YouTube', href: '#', target: '_blank', rel: 'noopener noreferrer' },
+  { name: 'instagram', label: 'Instagram', href: '#', target: '_blank', rel: 'noopener noreferrer' },
+] as const satisfies readonly {
+  name: string;
+  label: string;
+  href: string;
+  target: '_blank';
+  rel: 'noopener noreferrer';
+}[];
 
 const year = new Date().getFullYear();
 ---
@@ -31,9 +37,6 @@ const year = new Date().getFullYear();
         <a href="/" aria-label="Lead At Your Peak — home">
           <Image src={logo} alt="Lead At Your Peak" class="h-12 w-auto" densities={[1, 2]} />
         </a>
-        <p class="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
-          Lead with presence. Influence with impact. Perform at your peak.
-        </p>
       </div>
 
       <nav aria-label="Footer">
@@ -52,10 +55,9 @@ const year = new Date().getFullYear();
       </nav>
 
       <div>
-        <p class="eyebrow eyebrow--on-dark">Take the next step</p>
+        <p class="eyebrow eyebrow--on-dark">Connect with us:</p>
         <div class="mt-4 flex flex-wrap gap-3">
-          <Button href="https://zcal.co/karolinagwinner" target="_blank" rel="noopener noreferrer" class="min-h-11 px-5 py-2.5 text-sm">Book A Call</Button>
-          <Button href="/contact#message" variant="outline-light" class="min-h-11 px-5 py-2.5 text-sm">
+          <Button href="/contact#message" variant="outline-light" class="min-h-11 px-5 py-2.5 text-sm text-gold-600 hover:text-gold-400">
             Send us a message
           </Button>
         </div>
@@ -65,6 +67,8 @@ const year = new Date().getFullYear();
               <li>
                 <a
                   href={social.href}
+                  target={social.target}
+                  rel={social.rel}
                   aria-label={social.label}
                   class="inline-flex h-11 w-11 items-center justify-center rounded-full ring-1 ring-white/25 transition hover:bg-white/10 hover:ring-gold-400"
                 >

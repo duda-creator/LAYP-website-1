@@ -2,12 +2,13 @@
 /**
  * Renders an <a> when `href` is given, otherwise a <button>.
  * - primary: conversion CTA — the only place orange appears
+ * - gold: brand-gold CTA, pairs bg and shadow so overrides can't mismatch
  * - secondary: accent outline (spec)
  * - outline-light: for navy surfaces
  */
 interface Props {
   href?: string;
-  variant?: 'primary' | 'secondary' | 'outline-light';
+  variant?: 'primary' | 'gold' | 'secondary' | 'outline-light';
   type?: 'button' | 'submit';
   target?: '_blank' | '_self';
   rel?: string;
@@ -22,6 +23,8 @@ const base =
 const variants = {
   primary:
     'bg-accent-500 text-white shadow-md shadow-accent-600/30 hover:brightness-105 hover:shadow-lg hover:shadow-accent-600/35',
+  gold:
+    'bg-gold-600 text-white shadow-md shadow-gold-600/30 hover:bg-gold-400 hover:shadow-lg hover:shadow-gold-400/35',
   secondary: 'border-2 border-accent-500 text-accent-600 hover:bg-accent-500/10',
   'outline-light': 'border-2 border-gold-400/70 text-white hover:border-gold-200 hover:bg-white/5',
 };
