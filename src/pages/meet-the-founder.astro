@@ -1,0 +1,246 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import Container from '../components/Container.astro';
+import FadeIn from '../components/FadeIn.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Icon from '../components/Icon.astro';
+import PeakAccent from '../components/PeakAccent.astro';
+import Section from '../components/Section.astro';
+
+import founderQuotePhoto from '../assets/images/KarolinaGwinner-76.jpg';
+import futureProofingPhoto from '../assets/images/Future proofing leaders.jpg';
+
+const gaps = [
+  {
+    title: 'Knowing versus being able to do it when it matters',
+    text: "Leadership development offers us an abundance of models, frameworks and strategies. But knowing what good leadership looks like and being able to embody it in a difficult conversation, a boardroom, a crisis or an exhausting week are two very different things. I became obsessed with closing that gap: the space between knowing and consistently being able to perform under pressure.",
+  },
+  {
+    title: 'Developing leadership skills but overlooking the habits that drive human behaviours',
+    text: 'A lot of programmes and investment goes into teaching leaders how to communicate, influence, delegate or coach, yet often pay far less attention to the human habits that drive adoption of new skills — how they manage their attention and energy, emotional regulation, and the ability to think clearly under pressure. But when those foundations are compromised, even the best leadership tools become much harder to access.',
+  },
+  {
+    title: 'Leadership development often ends when the workshop ends',
+    text: "I also saw how easily powerful insights disappeared once leaders returned to full calendars, competing priorities and everyday pressure. Enthusiasm evaporated quickly and got replaced by a daily grind. The issue wasn't a lack of intelligence or motivation. The challenge was turning insight into behaviour, and behaviour into a habit that is sustainable. My work aims at bridging that gap between learning about leadership and actually living it long after the programme is over.",
+  },
+] as const;
+
+const accomplishments = [
+  'Recognized thought leader — named a LinkedIn Top Voice (August 2024)',
+  'Co-author of "Breakthrough: Secrets of Growth, Happiness, and Bouncebacks from Women Around the World"',
+  "Host of the Leaders' Watercooler newsletter with over 1,000 subscribers",
+  'Former Knowledge Partner of the Women Leaders Institute',
+];
+
+const background = [
+  'Corporate background in financial services, technology and recruitment (Merrill Lynch, BNY Mellon, Hewlett-Packard)',
+  'Polish-born, based in Singapore for 13+ years',
+];
+---
+
+<BaseLayout
+  title="Meet the Founder | Lead At Your Peak"
+  description="Karolina Gwinner is a speaker, facilitator and executive coach who equips leaders, senior executives, and teams across APAC to elevate presence, influence, and performance."
+>
+  <Header slot="header" />
+
+  <main>
+    <!-- Hero: photo with quote overlay -->
+    <section class="relative flex h-[calc(100svh-4rem)] max-h-[56rem] min-h-[34rem] items-center bg-navy-950 md:h-[calc(100svh-5rem)]">
+      <Image
+        src={founderQuotePhoto}
+        alt="Karolina Gwinner"
+        class="absolute inset-0 h-full w-full object-cover object-[50%_20%]"
+        widths={[768, 1280, 1920]}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-900/60 to-navy-900/25"></div>
+      <Container class="relative py-24 text-white md:py-32">
+        <div class="max-w-2xl translate-x-[300px]">
+          <p class="eyebrow eyebrow--on-dark">Meet the founder</p>
+          <h1 class="mt-4 text-3xl leading-tight sm:text-4xl md:text-5xl">
+            Your greatest strength can become your greatest liability under pressure.
+          </h1>
+          <PeakAccent class="mt-6" />
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
+            Drive becomes intensity. High standards become control. Responsibility becomes
+            over-responsibility. Great leadership requires range.
+          </p>
+        </div>
+      </Container>
+    </section>
+
+    <!-- The moment I understood what peak leadership really meant -->
+    <Section bg="white">
+      <Container class="max-w-3xl">
+        <FadeIn>
+          <p class="eyebrow">Leadership is revealed under pressure</p>
+          <h2 class="mt-3 text-3xl md:text-4xl">
+            The moment I understood what peak leadership really meant
+          </h2>
+          <p class="mt-6 leading-relaxed text-ink/80">
+            Over the years, working with leaders across industries and cultures, I began to notice
+            something. The leaders who made the greatest impact weren't necessarily the ones who
+            knew the most, worked the hardest or had the most impressive titles. They were the ones
+            who could stay clear, grounded and influential when the pressure was on.
+          </p>
+          <p class="mt-4 leading-relaxed text-ink/80">
+            That was when I began to see peak leadership differently: not as performing at maximum
+            pace or intensity, but as being able to access your best when it matters most.
+          </p>
+        </FadeIn>
+      </Container>
+    </Section>
+
+    <!-- Quote callout -->
+    <Section bg="navy" class="relative overflow-hidden">
+      <PeakAccent variant="watermark" class="absolute -right-10 bottom-0 h-64 w-auto opacity-20" />
+      <Container class="relative max-w-2xl text-center">
+        <p class="font-heading text-2xl italic leading-snug text-white md:text-3xl">
+          &ldquo;Pressure doesn't create your leadership. It reveals it.&rdquo;
+        </p>
+        <p class="mx-auto mt-5 max-w-xl leading-relaxed text-white/80">
+          When the stakes rise, your habits, patterns and ability to regulate yourself become
+          impossible to hide.
+        </p>
+      </Container>
+    </Section>
+
+
+    <!-- What I saw missing -->
+    <Section bg="cream">
+      <Container>
+        <div class="max-w-2xl">
+          <p class="eyebrow">A different approach</p>
+          <h2 class="mt-3 text-3xl md:text-4xl">
+            What I saw missing in traditional leadership development
+          </h2>
+        </div>
+        <div class="mt-12 grid gap-6 lg:grid-cols-3">
+          {
+            gaps.map((gap, index) => (
+              <FadeIn delay={index * 100}>
+                <Card class="h-full">
+                  <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-navy-800/5 font-heading text-lg font-semibold text-gold-600">
+                    {index + 1}
+                  </span>
+                  <h3 class="mt-4 text-base">{gap.title}</h3>
+                  <p class="mt-3 text-sm leading-relaxed text-ink/70">{gap.text}</p>
+                </Card>
+              </FadeIn>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <!-- Why I built Lead At Your Peak -->
+    <Section bg="white">
+      <Container>
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+          <FadeIn>
+            <p class="eyebrow">Why I built Lead At Your Peak</p>
+            <h2 class="mt-3 text-3xl md:text-4xl">
+              Building a proven and integrated development system, not another collection of best
+              tips
+            </h2>
+            <p class="mt-5 leading-relaxed text-ink/80">
+              After years of working with driven and ambitious leaders and chasing any research
+              study that could help them optimise how they lead and perform, I realised that the
+              most powerful tips tend to be ineffective or short-lived if they come without a
+              well-structured foundation. So, based on everything that I knew, observed and taught,
+              I decided to build frameworks that provided such a solid structure and foundation.
+              They help leaders understand the patterns shaping how they think, respond,
+              communicate and influence under pressure.
+            </p>
+            <p class="mt-4 leading-relaxed text-ink/80">
+              Lead At Your Peak was born from that ambition: to help leaders strengthen the inner
+              foundations and align it with a way they want to lead. This allows them to show up
+              and lead at their best even when the stakes and pressure increase.
+            </p>
+          </FadeIn>
+          <FadeIn delay={150} class="mx-auto w-full max-w-lg">
+            <Image
+              src={futureProofingPhoto}
+              alt="Future proofing leaders"
+              class="w-full rounded-2xl shadow-xl shadow-navy-800/15"
+              widths={[480, 768, 1024]}
+              sizes="(min-width: 1024px) 520px, 90vw"
+            />
+          </FadeIn>
+        </div>
+      </Container>
+    </Section>
+
+    <!-- Bio -->
+    <Section bg="beige">
+      <Container class="max-w-3xl">
+        <FadeIn>
+          <p class="eyebrow">About Karolina</p>
+          <p class="mt-5 leading-relaxed text-ink/80">
+            Karolina is a speaker, facilitator and executive coach who equips leaders, senior
+            executives, and teams across APAC to elevate presence, influence, and performance. With
+            over a decade of experience partnering with Fortune 500 companies, she designs and
+            delivers neuroscience-backed, results-oriented learning solutions that drive measurable
+            business outcomes.
+          </p>
+
+          <h3 class="eyebrow mt-9">Certifications</h3>
+          <p class="mt-3 leading-relaxed text-ink/80">
+            Certified as a Brain-Based Executive Coach by the NeuroLeadership Institute and trained
+            by the Human Performance Institute, Karolina brings evidence-based rigor to behavioral
+            and organizational change. She facilitates the Miki Island high-performance simulation
+            and conducts insight-driven leadership and team assessments to enable data-informed,
+            targeted learning interventions. Karolina holds certificates in Creating Leadership
+            Development Programs and Virtual Instructional Design from the Association for Talent
+            Development.
+          </p>
+
+          <h3 class="eyebrow mt-9">Accomplishments</h3>
+          <ul class="mt-3 space-y-2.5">
+            {
+              accomplishments.map((item) => (
+                <li class="flex items-start gap-2.5 leading-relaxed text-ink/80">
+                  <Icon name="check" class="mt-1 h-4 w-4 shrink-0 text-gold-600" />
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+
+          <h3 class="eyebrow mt-9">Background</h3>
+          <ul class="mt-3 space-y-2.5">
+            {
+              background.map((item) => (
+                <li class="flex items-start gap-2.5 leading-relaxed text-ink/80">
+                  <Icon name="check" class="mt-1 h-4 w-4 shrink-0 text-gold-600" />
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </FadeIn>
+      </Container>
+    </Section>
+
+    <!-- CTA -->
+    <Section bg="navy" class="text-center">
+      <Container>
+        <h2 class="text-3xl md:text-4xl">Ready to find out what's possible for you?</h2>
+        <div class="mt-8">
+          <Button href="https://zcal.co/karolinagwinner" variant="gold" target="_blank" rel="noopener noreferrer">
+            Book A Discovery Call
+          </Button>
+        </div>
+      </Container>
+    </Section>
+  </main>
+
+  <Footer slot="footer" />
+</BaseLayout>
