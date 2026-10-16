@@ -27,8 +27,8 @@ const services = [
     who: 'Mid-to-senior leaders, executives, people managers, team leads, and high-potential leaders who need to communicate, influence, and perform in complex, high-pressure environments.',
     included: [
       'Engaging, facilitated learning experiences, in person or virtually',
-      'Practical tools and science-backed strategies for immediate application',
       'Pre-programme assessment to tailor learning to participants’ needs',
+      'Practical tools and science-backed strategies for immediate application',
       'Post-programme support to embed learning and sustain behaviour change',
     ],
     outcomes: [
@@ -339,7 +339,9 @@ const services = [
             {service.offerings.length > 0 && (
               service.id === 'leadership-development-training' ? (
                 <div class="mt-12 rounded-2xl bg-cream/70 p-5 md:p-8 lg:p-10">
-                  <h3 class="eyebrow mb-6">OUR SIGNATURE PROGRAMMES</h3>
+                  <h3 class="mb-7 border-l-4 border-gold-600 pl-4 font-heading text-2xl font-bold text-navy-800 md:text-3xl">
+                    OUR SIGNATURE PROGRAMMES
+                  </h3>
                   <div class="grid gap-6">
                     {service.offerings.map((offering, index) => (
                       'who' in offering && (
