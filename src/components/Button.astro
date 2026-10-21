@@ -8,7 +8,7 @@
  */
 interface Props {
   href?: string;
-  variant?: 'primary' | 'gold' | 'secondary' | 'outline-light';
+  variant?: 'primary' | 'gold' | 'secondary' | 'outline-light' | 'navy';
   type?: 'button' | 'submit';
   target?: '_blank' | '_self';
   rel?: string;
@@ -27,6 +27,7 @@ const variants = {
     'bg-gold-600 text-white shadow-md shadow-gold-600/30 hover:bg-gold-400 hover:shadow-lg hover:shadow-gold-400/35',
   secondary: 'border-2 border-accent-500 text-accent-600 hover:bg-accent-500/10',
   'outline-light': 'border-2 border-gold-400/70 text-white hover:border-gold-200 hover:bg-white/5',
+  navy: 'bg-navy-800 text-white shadow-md shadow-navy-800/25 hover:bg-navy-900 hover:shadow-lg hover:shadow-navy-900/30',
 };
 
 const Tag = href ? 'a' : 'button';
