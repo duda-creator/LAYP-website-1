@@ -23,7 +23,7 @@ const services = [
     photo: trainingPhoto,
     alt: 'Karolina Gwinner facilitating a lively training discussion among corporate leaders',
     description:
-      'Going beyond traditional skills-based training, our interactive leadership programmes and workshops turn insights into practical behaviours and sustainable habits that stick. Through experiential learning and real-world application, we equip leaders and teams to navigate complexity, perform under pressure, and deliver meaningful results.',
+      'Going beyond skills-based training, our interactive leadership programmes and workshops help participants develop practical behaviours and sustainable habits. Through experiential learning and real-world application, we equip leaders and teams to navigate complexity, perform under pressure, and deliver lasting results.',
     who: 'Mid-to-senior leaders, executives, people managers, team leads, and high-potential leaders who need to communicate, influence, and perform in complex, high-pressure environments.',
     included: [
       'Engaging, facilitated learning experiences, in person or virtually',
@@ -107,11 +107,13 @@ const services = [
   {
     id: 'executive-coaching',
     icon: 'coaching',
-    title: 'Executive, Group & Team Coaching',
+    title: 'Executive, Group and Team Coaching',
     photo: coachingPhoto,
     alt: 'Karolina Gwinner coaching a female senior leader',
     description:
-      'Under pressure, even highly capable leaders can fall back on patterns that limit their influence, effectiveness, and energy. Our brain-based coaching helps leaders and teams recognise these patterns, expand their leadership range, and turn insights into lasting behaviour change. Each engagement is tailored to your organisation’s challenges and leadership priorities, with a focus on meaningful, measurable shifts in how people show up, work together, and perform.',
+      'Under pressure, even highly capable leaders and teams can fall back on patterns that limit their influence, effectiveness, and energy. Our brain-based coaching helps them recognise these patterns, respond with greater awareness and flexibility, and turn insights into lasting behaviour change.',
+    descriptionContinuation:
+      'Each engagement is tailored to your organisation’s challenges and priorities, with a focus on meaningful, measurable shifts in how people show up, work together, and perform.',
     who: 'Executives, senior leaders, directors, and high-potential talent stepping into bigger roles, navigating change, or strengthening their impact. Small cohorts and leadership teams can work on shared challenges, alignment, and collective performance.',
     included: [
       'Confidential, structured engagements for individuals, small groups, or intact teams',
@@ -252,7 +254,7 @@ const services = [
 
 <BaseLayout
   title="Services | Lead At Your Peak"
-  description="Leadership development training, executive and team coaching, custom learning journeys, and high-energy keynote presentations for leaders and organisations."
+  description="Leadership development training, executive and team coaching, custom learning journeys, and high-energy keynote presentations for leaders, teams and organisations."
 >
   <Header slot="header" />
 
@@ -262,11 +264,11 @@ const services = [
       <PeakAccent variant="watermark" class="absolute -right-10 bottom-0 h-64 w-auto opacity-25" />
       <Container class="relative max-w-3xl text-center">
         <p class="eyebrow eyebrow--on-dark">Our services</p>
-        <h1 class="mt-4 text-4xl md:text-5xl">Elevate Your Leadership</h1>
+        <h1 class="mt-4 text-4xl md:text-5xl">Elevating Leaders And Teams</h1>
         <div class="mt-6 flex justify-center"><PeakAccent /></div>
         <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/85">
-          Four ways we partner with you to build leadership capability, strengthen performance, and
-          turn insights into meaningful impact.
+          We partner with ambitious organisations to build leadership capabilities, strengthen team effectiveness,
+          and turn pressure into peak performance.
         </p>
       </Container>
     </Section>
@@ -304,6 +306,9 @@ const services = [
                 </span>
                 <h2 class="mt-5 text-3xl">{service.title}</h2>
                 <p class="mt-4 leading-relaxed text-ink/80">{service.description}</p>
+                {service.id === 'executive-coaching' && (
+                  <p class="mt-4 leading-relaxed text-ink/80">{service.descriptionContinuation}</p>
+                )}
 
                 {service.id === 'custom-learning-journeys' ? (
                   <>
