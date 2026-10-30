@@ -82,7 +82,7 @@ const challenges = [
             Lead At Your Peak When The Stakes Are High
           </h1>
           <PeakAccent class="mt-6" />
-          <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
+          <p class="mt-6 max-w-3xl text-lg leading-relaxed text-white/85">
             We help leaders and teams in high-pressure environments strengthen presence and performance
             to lead with influence and impact.
           </p>
@@ -96,49 +96,52 @@ const challenges = [
     <!-- 2 · Problem / Solution -->
     <Section bg="white" id="challenges">
       <Container>
-        <div class="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="eyebrow">Sound familiar?</p>
+          <h2 class="mt-3 text-3xl md:text-4xl">The Demands of Leadership Keep Rising</h2>
+          <p class="mt-4 leading-relaxed text-ink/70">
+            Whether you're developing leaders across your organisation or strengthening your own leadership impact, today's expectations call for new ways of leading and performing.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-2">
           <FadeIn>
-            <p class="eyebrow">Sound familiar?</p>
-            <h2 class="mt-3 text-3xl md:text-4xl">Crushing it at work, but&hellip;</h2>
-            <p class="mt-5 max-w-xl leading-relaxed text-ink/80">
-              You've built a strong track record. You're capable, ambitious, and trusted to deliver.
-              But success at this level brings a different set of challenges.
-            </p>
-            <p class="mt-4 font-heading font-semibold text-navy-800">Which of these feels most familiar?</p>
-            <ul class="mt-5 space-y-4">
-              {
-                challenges.map((challenge) => (
-                  <li class="flex items-start gap-3">
-                    <span class="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-navy-800/5 text-gold-600">
-                      <Icon name="peak" class="h-3.5 w-3.5" />
-                    </span>
-                    <span class="leading-relaxed text-ink/85">{challenge}</span>
-                  </li>
-                ))
-              }
-            </ul>
-            <p class="mt-7 max-w-xl leading-relaxed text-ink/80">
-              Here's what changes as you rise:
-              <br><br>
-              The level you’re operating at or stepping into does not simply call for more effort. <strong>It requires a different way of leading.</strong>
-              <br><br>
-              That's exactly where we come in. We equip you to build grounded presence, amplify your influence, and perform at your peak under pressure. 
-              <br><br>
-              <strong>The result? The impact you make becomes impossible to ignore.</strong>            
-            </p>
+            <article class="flex h-full flex-col rounded-2xl bg-navy-800 p-7 text-white shadow-sm sm:p-8">
+              <div class="flex items-center gap-3 border-b border-white/15 pb-5">
+                <span class="text-gold-400"><Icon name="chart" class="h-6 w-6" /></span>
+                <p class="eyebrow text-sm text-gold-400">For organisations</p>
+              </div>
+              <h3 class="mt-6 text-xl font-bold leading-snug sm:text-2xl">
+                Your people are capable. Yet today's strengths may not be enough for tomorrow's challenges.
+              </h3>
+              <ol class="mt-6 flex-1 space-y-5 text-base leading-relaxed text-white/90">
+                <li><span class="font-semibold">1.</span> Your leaders have the expertise, but it doesn't always translate into influence.</li>
+                <li><span class="font-semibold">2.</span> Sustained pressure is taking a toll on energy, effectiveness and long-term performance.</li>
+                <li><span class="font-semibold">3.</span> As pace and complexity increase, familiar ways of leading and working are falling short.</li>
+              </ol>
+              <Button href="/services" variant="gold" class="mt-8 w-full">Explore Leadership Solutions <span aria-hidden="true">→</span></Button>
+            </article>
           </FadeIn>
-          <FadeIn delay={150} class="mx-auto w-full max-w-md lg:max-w-none">
-            <div class="relative">
-              <Image
-                src={purposePhoto}
-                alt="Karolina Gwinner standing confidently beside a window graphic reading Purpose Power"
-                class="aspect-[3/4] w-full rounded-2xl object-cover shadow-xl shadow-navy-800/15"
-                widths={[480, 768, 1024]}
-                sizes="(min-width: 1024px) 420px, 90vw"
-              />
-            </div>
+
+          <FadeIn delay={150}>
+            <article class="flex h-full flex-col rounded-2xl border border-gold-600/50 bg-white p-7 shadow-sm sm:p-8">
+              <div class="flex items-center gap-3 border-b border-navy-800/10 pb-5">
+                <span class="text-gold-600"><Icon name="user" class="h-6 w-6" /></span>
+                <p class="eyebrow text-sm">For individual leaders</p>
+              </div>
+              <h3 class="mt-6 text-xl font-bold leading-snug text-navy-800 sm:text-2xl">
+                You've built a strong track record. But what brought you success so far may not be what takes you further.
+              </h3>
+              <ol class="mt-6 flex-1 space-y-5 text-base leading-relaxed text-ink/85">
+                <li><span class="font-semibold">1.</span> You have strong ideas, but they don't always land under pressure.</li>
+                <li><span class="font-semibold">2.</span> You're valued as an expert, but not yet seen as a strategic leader.</li>
+                <li><span class="font-semibold">3.</span> You're delivering on the outside, but feeling increasingly depleted beneath the surface.</li>
+              </ol>
+              <Button href="/services#executive-coaching" variant="secondary" class="mt-8 w-full border-gold-600 !bg-white text-navy-800 hover:!bg-white hover:text-navy-800">Explore Executive Coaching <span aria-hidden="true">→</span></Button>
+            </article>
           </FadeIn>
         </div>
+  
       </Container>
     </Section>
 
@@ -273,7 +276,7 @@ const challenges = [
       <div class="absolute inset-0 bg-gradient-to-br from-navy-950/85 via-navy-900/75 to-navy-800/60"></div>
       <Container class="relative">
         <div class="mx-auto max-w-2xl text-center">
-          <p class="eyebrow eyebrow--on-dark">Biweekly insights</p>
+          <p class="eyebrow eyebrow--on-dark mx-auto text-center">Biweekly insights</p>
           <h2 class="mt-3 text-3xl md:text-4xl">The Edge Every Leader Needs</h2>
           <p class="mt-4 leading-relaxed text-white/80">
             Get our specially curated leadership insights to stay sharp, lead with presence and perform at your peak
