@@ -11,8 +11,5 @@ export default defineConfig({
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]
-  },
-  redirects: {
-    '/about': '/meet-the-founder'
   }
 });
