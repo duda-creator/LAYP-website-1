@@ -13,7 +13,7 @@ import PeakAccent from '../components/PeakAccent.astro';
 import Section from '../components/Section.astro';
 
 import heroPhoto from '../assets/images/hero-session.jpg';
-import founderPhoto from '../assets/images/founder-smiling.jpg';
+import founderPhoto from '../assets/images/meet the founder karolina gwinner.jpg';
 import purposePhoto from '../assets/images/purpose-power-pose.jpg';
 import newsletterPhoto from '../assets/images/Newsletter group of leaders smiling.jpg';
 
@@ -240,14 +240,15 @@ const challenges = [
     <Section bg="beige" id="about">
       <Container>
         <div class="grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
-          <FadeIn class="mx-auto w-full max-w-md lg:max-w-none">
+          <FadeIn class="relative mx-auto w-full max-w-md overflow-hidden rounded-2xl shadow-xl shadow-navy-800/15 lg:max-w-none">
             <Image
               src={founderPhoto}
-              alt="Karolina Gwinner smiling during a coaching conversation"
-              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-xl shadow-navy-800/15"
+              alt="Karolina Gwinner, founder of Lead At Your Peak, wearing a green blazer"
+              class="block aspect-[4/3] w-full object-cover object-left"
               widths={[480, 768, 1024]}
               sizes="(min-width: 1024px) 480px, 90vw"
             />
+            <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-r from-navy-800/10 via-navy-800/15 to-navy-900/30"></div>
           </FadeIn>
           <FadeIn delay={150}>
             <p class="eyebrow">Who you'll work with</p>
