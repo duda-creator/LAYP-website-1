@@ -12,9 +12,15 @@ const services = [
   { label: 'Keynote Presentations', href: '/services#keynote-presentations' },
 ];
 
-const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const currentPath = Astro.url.pathname
+  .replace(/\/index\.html$/, '/')
+  .replace(/\.html$/, '')
+  .replace(/\/+$/, '') || '/';
+const sectionPath = currentPath === '/meet-the-founder' ? '/about' : currentPath;
 const isActive = (href: string) =>
-  href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+  sectionPath === href || (href !== '/' && sectionPath.startsWith(`${href}/`));
+const navCurrent = (href: string) =>
+  isActive(href) ? (currentPath === href ? 'page' : 'location') : undefined;
 
 const navLink = (href: string) =>
   [
@@ -28,7 +34,7 @@ const mobileNavLink = (href: string) =>
   [
     'rounded-lg px-3 py-3 font-medium transition hover:bg-white/10',
     isActive(href)
-      ? 'text-gold-600 underline decoration-2 underline-offset-4'
+      ? 'text-gold-400 underline decoration-2 underline-offset-4'
       : 'text-white/90 hover:text-gold-200',
   ].join(' ');
 ---
@@ -42,11 +48,13 @@ const mobileNavLink = (href: string) =>
 
     <!-- Desktop navigation -->
     <nav class="hidden items-center gap-8 md:flex" aria-label="Main">
-      <a href="/" class={navLink('/')}>Home</a>
+      <a href="/" class={navLink('/')} aria-current={navCurrent('/')}>Home</a>
+      <a href="/about" class={navLink('/about')} aria-current={navCurrent('/about')}>About</a>
       <div class="group relative">
         <button
           type="button"
           class:list={[navLink('/services'), 'inline-flex cursor-pointer items-center gap-1.5 py-2']}
+          aria-current={navCurrent('/services')}
           aria-haspopup="true"
         >
           Services
@@ -71,8 +79,7 @@ const mobileNavLink = (href: string) =>
           </ul>
         </div>
       </div>
-      <a href="/about" class={navLink('/about')}>About</a>
-      <a href="/contact" class={navLink('/contact')}>Contact</a>
+      <a href="/contact" class={navLink('/contact')} aria-current={navCurrent('/contact')}>Contact</a>
       <Button href="https://zcal.co/karolinagwinner" target="_blank" rel="noopener noreferrer" class="min-h-11 px-5 py-2.5 text-sm">Schedule a Consultation</Button>
     </nav>
 
@@ -93,8 +100,11 @@ const mobileNavLink = (href: string) =>
   <!-- Mobile menu panel -->
   <nav id="mobile-menu" class="hidden border-t border-white/10 bg-navy-900 md:hidden" aria-label="Mobile">
     <Container class="flex flex-col gap-1 py-4">
-      <a href="/" class={mobileNavLink('/')}>
+      <a href="/" class={mobileNavLink('/')} aria-current={navCurrent('/')}>
         Home
+      </a>
+      <a href="/about" class={mobileNavLink('/about')} aria-current={navCurrent('/about')}>
+        About
       </a>
       
       <!-- Services Submenu -->
@@ -102,6 +112,7 @@ const mobileNavLink = (href: string) =>
         type="button"
         id="services-toggle"
         class:list={[mobileNavLink('/services'), 'flex w-full items-center justify-between']}
+        aria-current={navCurrent('/services')}
         aria-expanded="false"
         aria-controls="services-submenu"
       >
@@ -121,10 +132,7 @@ const mobileNavLink = (href: string) =>
         }
       </div>
 
-      <a href="/about" class={mobileNavLink('/about')}>
-        About
-      </a>
-      <a href="/contact" class={mobileNavLink('/contact')}>
+      <a href="/contact" class={mobileNavLink('/contact')} aria-current={navCurrent('/contact')}>
         Contact
       </a>
       <Button href="https://zcal.co/karolinagwinner" target="_blank" rel="noopener noreferrer" class="mt-3">Schedule a Consultation</Button>
