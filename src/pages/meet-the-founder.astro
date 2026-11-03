@@ -30,18 +30,6 @@ const gaps = [
   },
 ] as const;
 
-const accomplishments = [
-  'Recognized thought leader, named a LinkedIn Top Voice (August 2024)',
-  'Co-author of the book "Breakthrough: Secrets of Growth, Happiness, and Bouncebacks from Women Around the World"',
-  "Host of the Leaders' Watercooler newsletter with over 1,000 subscribers",
-  'Former Knowledge Partner of the Women Leaders Institute',
-];
-
-const background = [
-  'Corporate background in financial services, technology and recruitment (Merrill Lynch, BNY Mellon, Hewlett-Packard)',
-  'Polish-born, based in Singapore for 13+ years',
-];
-
 const expertiseMetrics = [
   {
     label: 'Facilitation',
@@ -62,6 +50,57 @@ const expertiseMetrics = [
     label: 'Newsletter',
     value: '1000+',
     description: 'Subscribers to Leaders’ Watercooler newsletter',
+  },
+] as const;
+
+const professionalCredentials = [
+  {
+    icon: 'island',
+    label: 'Certified Partner',
+    title: 'Miki Island High-Performance Simulation',
+    provider: 'Aeqlia',
+  },
+  {
+    icon: 'layers',
+    label: 'Certification',
+    title: 'Creating Leadership Development Programs',
+    provider: 'Association for Talent Development (ATD)',
+  },
+  {
+    icon: 'brain',
+    label: 'Certification',
+    title: 'Brain-Based Coaching',
+    provider: 'NeuroLeadership Institute',
+  },
+  {
+    icon: 'runner',
+    label: 'Facilitator Training',
+    title: 'Corporate Athlete® Performance Course',
+    provider: 'Johnson & Johnson Human Performance Institute',
+  },
+] as const;
+
+const recognitionContributions = [
+  {
+    icon: 'award',
+    title: 'LinkedIn Top Voice',
+    description: 'Recognised for thought leadership (2024)',
+  },
+  {
+    icon: 'book',
+    title: 'Published Co-Author',
+    description:
+      'Breakthrough: Secrets of Growth, Happiness and Bouncebacks from Women Around the World (2018)',
+  },
+  {
+    icon: 'microphone',
+    title: 'KeyNote Women Speakers',
+    description: 'Speaker Training Co-Lead (2020–2025)',
+  },
+  {
+    icon: 'users',
+    title: 'Women Leaders Institute',
+    description: 'Former Knowledge Partner (2019–2023)',
   },
 ] as const;
 ---
@@ -266,7 +305,12 @@ const expertiseMetrics = [
               </p>
             </div>
             <div class="mt-8 border-t border-gold-600/50 pt-6">
-              <h3 class="eyebrow">My Corporate Roots</h3>
+              <h3 class="eyebrow">Corporate Roots</h3>
+              <p class="mt-4 leading-relaxed text-ink/85">
+                My corporate background spans financial services, technology and recruitment. It gives
+                me a firsthand understanding of the pace, complexity and pressures that leaders
+                navigate every day.
+              </p>
               <ul class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-heading text-base font-bold text-ink">
                 <li>Merrill Lynch</li>
                 <li aria-hidden="true" class="text-gold-600">&middot;</li>
@@ -280,7 +324,7 @@ const expertiseMetrics = [
             <dl class="grid gap-5 sm:grid-cols-2">
               {
                 expertiseMetrics.map((metric) => (
-                  <div class="expertise-card relative isolate min-w-0 overflow-hidden rounded-2xl p-6 pb-16 text-white shadow-sm ring-1 ring-white/10 sm:min-h-72 lg:min-h-76">
+                  <div class="expertise-card relative isolate min-w-0 overflow-hidden rounded-2xl p-6 pb-16 text-white shadow-sm ring-1 ring-white/10 sm:min-h-72 lg:min-h-80 lg:pb-20">
                     <dt class="relative z-10 font-heading text-xs font-semibold uppercase leading-relaxed tracking-[0.18em] text-[#ffda62] sm:text-sm">
                       {metric.label}
                     </dt>
@@ -306,54 +350,72 @@ const expertiseMetrics = [
       </Container>
     </Section>
 
-    <!-- Bio -->
-    <Section bg="beige">
-      <Container class="max-w-3xl">
+    <!-- Professional credentials -->
+    <Section bg="white" id="professional-credentials">
+      <Container>
         <FadeIn>
-          <p class="eyebrow">About Karolina</p>
-          <p class="mt-5 leading-relaxed text-ink/80">
-            Karolina is a speaker, facilitator and executive coach who equips leaders, senior
-            executives, and teams across APAC to elevate presence, influence, and performance. With
-            over a decade of experience partnering with Fortune 500 companies, she designs and
-            delivers neuroscience-backed, results-oriented learning solutions that drive measurable
-            business outcomes.
+          <p class="eyebrow">Professional Credentials</p>
+          <h2 class="mt-5 text-3xl leading-tight md:text-4xl">
+            Credibility Built on Continuous Learning
+          </h2>
+          <p class="mt-5 leading-relaxed text-ink/85 md:text-lg">
+            I invest in ongoing learning to bring research-based, practical and impactful solutions
+            to the leaders and organisations I work with.
           </p>
-
-          <h3 class="eyebrow mt-9">Certifications</h3>
-          <p class="mt-3 leading-relaxed text-ink/80">
-            Certified as a Brain-Based Executive Coach by the NeuroLeadership Institute and trained
-            by the Human Performance Institute, Karolina brings evidence-based rigor to behavioral
-            and organizational change. She facilitates the Miki Island high-performance simulation
-            and conducts insight-driven leadership and team assessments to enable data-informed,
-            targeted learning interventions. Karolina holds certificates in Creating Leadership
-            Development Programs and Virtual Instructional Design from the Association for Talent
-            Development.
-          </p>
-
-          <h3 class="eyebrow mt-9">Accomplishments</h3>
-          <ul class="mt-3 space-y-2.5">
-            {
-              accomplishments.map((item) => (
-                <li class="flex items-start gap-2.5 leading-relaxed text-ink/80">
-                  <Icon name="check" class="mt-1 h-4 w-4 shrink-0 text-gold-600" />
-                  {item}
-                </li>
-              ))
-            }
-          </ul>
-
-          <h3 class="eyebrow mt-9">Background</h3>
-          <ul class="mt-3 space-y-2.5">
-            {
-              background.map((item) => (
-                <li class="flex items-start gap-2.5 leading-relaxed text-ink/80">
-                  <Icon name="check" class="mt-1 h-4 w-4 shrink-0 text-gold-600" />
-                  {item}
-                </li>
-              ))
-            }
-          </ul>
         </FadeIn>
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          {
+            professionalCredentials.map((credential, index) => (
+              <FadeIn delay={index * 75} class="h-full">
+                <article class="flex h-full items-center gap-5 rounded-2xl border border-beige bg-cream/65 p-6 lg:gap-7 lg:p-7">
+                  <span class="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gold-200/50 text-navy-900 sm:h-16 sm:w-16 lg:h-18 lg:w-18">
+                    <Icon name={credential.icon} class="h-8 w-8 lg:h-10 lg:w-10" />
+                  </span>
+                  <div class="min-w-0 flex-1 border-l border-gold-600/70 py-1 pl-5 lg:pl-6">
+                    <p class="font-heading text-xs font-semibold uppercase leading-relaxed tracking-[0.1em] text-gold-600">
+                      {credential.label}
+                    </p>
+                    <h3 class="mt-2 text-xl leading-snug">{credential.title}</h3>
+                    <p class="mt-3 leading-relaxed text-ink/85">{credential.provider}</p>
+                  </div>
+                </article>
+              </FadeIn>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <!-- Recognition and contributions -->
+    <Section bg="cream" id="recognition-and-contributions">
+      <Container>
+        <FadeIn>
+          <p class="eyebrow">Recognition and Contributions</p>
+          <h2 class="mt-5 text-3xl leading-tight md:text-4xl">
+            Committed to Professional Excellence
+          </h2>
+          <p class="mt-5 leading-relaxed text-ink/75 md:text-lg">
+            Alongside my work with clients, I share ideas and contribute to communities advancing
+            leadership practice.
+          </p>
+        </FadeIn>
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          {
+            recognitionContributions.map((contribution, index) => (
+              <FadeIn delay={index * 75} class="h-full">
+                <article class="flex h-full items-start gap-5 rounded-2xl bg-white p-6 lg:gap-6 lg:p-8">
+                  <span class="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-navy-800 text-[#ffda62] sm:h-16 sm:w-16">
+                    <Icon name={contribution.icon} class="h-7 w-7 sm:h-8 sm:w-8" />
+                  </span>
+                  <div class="min-w-0">
+                    <h3 class="text-xl leading-snug">{contribution.title}</h3>
+                    <p class="mt-3 leading-relaxed text-ink/85">{contribution.description}</p>
+                  </div>
+                </article>
+              </FadeIn>
+            ))
+          }
+        </div>
       </Container>
     </Section>
 
