@@ -12,6 +12,7 @@ import PeakAccent from '../components/PeakAccent.astro';
 import Section from '../components/Section.astro';
 
 import founderQuotePhoto from '../assets/images/KarolinaGwinner-76.jpg';
+import purposePhoto from '../assets/images/purpose-power-pose.jpg';
 import futureProofingPhoto from '../assets/images/Future proofing leaders.jpg';
 
 const gaps = [
@@ -30,8 +31,8 @@ const gaps = [
 ] as const;
 
 const accomplishments = [
-  'Recognized thought leader — named a LinkedIn Top Voice (August 2024)',
-  'Co-author of "Breakthrough: Secrets of Growth, Happiness, and Bouncebacks from Women Around the World"',
+  'Recognized thought leader, named a LinkedIn Top Voice (August 2024)',
+  'Co-author of the book "Breakthrough: Secrets of Growth, Happiness, and Bouncebacks from Women Around the World"',
   "Host of the Leaders' Watercooler newsletter with over 1,000 subscribers",
   'Former Knowledge Partner of the Women Leaders Institute',
 ];
@@ -40,6 +41,29 @@ const background = [
   'Corporate background in financial services, technology and recruitment (Merrill Lynch, BNY Mellon, Hewlett-Packard)',
   'Polish-born, based in Singapore for 13+ years',
 ];
+
+const expertiseMetrics = [
+  {
+    label: 'Facilitation',
+    value: '15+',
+    description: 'Years facilitating leadership development programmes',
+  },
+  {
+    label: 'Programme Design',
+    value: '10+',
+    description: 'Years designing leadership development programmes',
+  },
+  {
+    label: 'Coaching',
+    value: '5+',
+    description: 'Years of executive coaching experience',
+  },
+  {
+    label: 'Newsletter',
+    value: '1000+',
+    description: 'Subscribers to Leaders’ Watercooler newsletter',
+  },
+] as const;
 ---
 
 <BaseLayout
@@ -65,38 +89,77 @@ const background = [
         <div class="max-w-2xl md:ml-auto md:max-w-xl lg:max-w-2xl">
           <p class="eyebrow eyebrow--on-dark">Meet the founder</p>
           <h1 class="mt-4 text-3xl leading-tight sm:text-4xl md:text-5xl">
-            When pressure rises, your strength can become your liability
+            When Pressure Rises, Your Strength Can Become Your Liability
           </h1>
           <PeakAccent class="mt-6" />
           <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
             Drive can become intensity. High standards can become control. Responsibility can become
-            overextension. 
-             <strong> Great leadership requires calibration.</strong>
+            overextension.
+            <strong class="mt-2 block">Great leadership requires calibration.</strong>
           </p>
         </div>
       </Container>
     </section>
 
-    <!-- The moment I understood what peak leadership really meant -->
+    <!-- What Shaped My View of Peak Leadership -->
     <Section bg="white">
-      <Container class="max-w-3xl">
-        <FadeIn>
-          <p class="eyebrow">Leadership is revealed under pressure</p>
-          <h2 class="mt-3 text-3xl md:text-4xl">
-            The moment I understood what peak leadership really meant
-          </h2>
-          <p class="mt-6 leading-relaxed text-ink/80">
-            Over the years, working with leaders across industries and cultures, I began to notice
-            something... The leaders who made the greatest impact weren't necessarily the ones who
-            knew the most, worked the hardest or had the most impressive titles. 
-            <br><br>
-            <strong>They were the ones who could stay clear, grounded and influential when the pressure was on.</strong>
-          </p>
-          <p class="mt-4 leading-relaxed text-ink/80">
-            That was when I began to see peak leadership differently: not as performing at maximum
-            pace or intensity, but as being able to access your best when it matters most.
-          </p>
-        </FadeIn>
+      <Container>
+        <div class="mx-auto grid max-w-3xl items-center gap-12 lg:max-w-none lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+          <FadeIn>
+            <p class="eyebrow">Leadership is revealed under pressure</p>
+            <h2 class="mt-3 text-3xl md:text-4xl">
+              What Shaped My View of Peak Leadership
+            </h2>
+            <p class="mt-6 leading-relaxed text-ink/80">
+              Over the years, working with leaders across industries and cultures, I've experienced
+              two very different kinds of leadership.
+            </p>
+            <p class="mt-4 leading-relaxed text-ink/80">
+              The difference became most apparent under pressure. When deadlines were slipping,
+              targets were out of reach or uncertainty filled the room.
+            </p>
+            <p class="mt-4 leading-relaxed text-ink/80">
+              With some leaders, I felt we could handle whatever came our way. They brought calm
+              and clarity, trusted me and gave me the confidence to step up.
+            </p>
+            <p class="mt-4 leading-relaxed text-ink/80">
+              Others had the opposite effect. When pressure mounted, so did the tension. I&nbsp;found
+              myself second-guessing, holding back and feeling smaller.
+            </p>
+            <p class="mt-4 leading-relaxed text-ink/80">
+              <strong>Same person. Same capabilities. Yet I showed up very differently.</strong>
+            </p>
+            <p class="mt-4 leading-relaxed text-ink/80">
+              I've since observed the same pattern in my work with clients: capable, experienced leaders
+              whose presence and performance can shift dramatically depending on the leadership around them.
+            </p>
+            <p class="mt-4 leading-relaxed text-ink/80">
+              It taught me something important.
+            </p>
+            <p class="mt-4 leading-relaxed text-ink/80">
+              The most impactful leaders weren't necessarily the ones with the greatest expertise,
+              strongest work ethic or most impressive titles.
+            </p>
+            <p class="mt-4 leading-relaxed text-ink/80">
+              <strong>They were the ones who could stay clear, grounded and influential under pressure,
+              and bring out the best in others.</strong>
+            </p>
+            <p class="mt-4 leading-relaxed text-ink/80">
+              That's how I see peak leadership. <strong>Not as performing at maximum intensity,
+              but as accessing your best when it matters most, while helping others do the same.</strong>
+            </p>
+          </FadeIn>
+          <FadeIn delay={150} class="mx-auto w-full max-w-lg">
+            <Image
+              src={purposePhoto}
+              alt="Karolina Gwinner in a purple blazer beside a Purpose Power display"
+              class="h-auto w-full rounded-2xl shadow-xl shadow-navy-800/15"
+              widths={[480, 768, 1024]}
+              sizes="(min-width: 1200px) 488px, (min-width: 1024px) 40vw, (min-width: 640px) 512px, 90vw"
+              loading="lazy"
+            />
+          </FadeIn>
+        </div>
       </Container>
     </Section>
 
@@ -105,7 +168,7 @@ const background = [
       <PeakAccent variant="watermark" class="absolute -right-10 bottom-0 h-64 w-auto opacity-20" />
       <Container class="relative max-w-2xl text-center">
         <p class="font-heading text-2xl italic leading-snug text-white md:text-3xl">
-          &ldquo;Pressure doesn't create your leadership. It reveals it.&rdquo;
+          &ldquo;Pressure doesn't build your leadership. It reveals it.&rdquo;
         </p>
         <p class="mx-auto mt-5 max-w-xl leading-relaxed text-white/80">
           When the stakes rise, your habits, patterns and ability to regulate yourself become
@@ -116,7 +179,7 @@ const background = [
 
 
     <!-- What I saw missing -->
-    <Section bg="cream">
+    <Section bg="cream" class="hidden">
       <Container>
         <div class="max-w-2xl">
           <p class="eyebrow">A different approach</p>
@@ -146,28 +209,26 @@ const background = [
     <Section bg="white">
       <Container>
         <div class="grid items-center gap-12 lg:grid-cols-2">
-          <FadeIn>
+          <FadeIn class="lg:order-2">
             <p class="eyebrow">Why I built Lead At Your Peak</p>
             <h2 class="mt-3 text-3xl md:text-4xl">
-              Building a proven and integrated development system, not another collection of best
-              tips
+              Beyond Techniques: A Framework for Lasting Growth
             </h2>
             <p class="mt-5 leading-relaxed text-ink/80">
-              After years of working with driven and ambitious leaders and chasing any research
-              study that could help them optimise how they lead and perform, I realised that the
-              most powerful tips tend to be ineffective or short-lived if they come without a
-              well-structured foundation. So, based on everything that I knew, observed and taught,
-              I decided to build frameworks that provided such a solid structure and foundation.
-              They help leaders understand the patterns shaping how they think, respond,
-              communicate and influence under pressure.
+              After years of working with ambitious leaders and exploring research on leadership
+              and peak performance, I realised that even the best techniques rarely create lasting change
+              without a solid foundation.
             </p>
             <p class="mt-4 leading-relaxed text-ink/80">
-              Lead At Your Peak was born from that ambition: to help leaders strengthen the inner
-              foundations and align it with a way they want to lead. This allows them to show up
-              and lead at their best even when the stakes and pressure increase.
+              That insight inspired me to develop an integrated, research-informed approach that helps leaders recognise and shift the patterns shaping how they think, communicate, and influence under pressure.
+            </p>
+            <p class="mt-4 leading-relaxed text-ink/80">
+              <strong>Lead at Your Peak was born from this vision:</strong> to help leaders build strong
+              inner foundations, lead with intention and perform at their best, even when the stakes
+              are high.
             </p>
           </FadeIn>
-          <FadeIn delay={150} class="mx-auto w-full max-w-lg">
+          <FadeIn delay={150} class="mx-auto w-full max-w-lg lg:order-1">
             <Image
               src={futureProofingPhoto}
               alt="Future proofing leaders"
@@ -175,6 +236,71 @@ const background = [
               widths={[480, 768, 1024]}
               sizes="(min-width: 1024px) 520px, 90vw"
             />
+          </FadeIn>
+        </div>
+      </Container>
+    </Section>
+
+    <!-- Background and expertise -->
+    <Section bg="cream" id="background-and-expertise">
+      <Container>
+        <div class="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] xl:gap-12">
+          <FadeIn>
+            <p class="eyebrow">Background and Expertise</p>
+            <h2 class="mt-5 text-3xl leading-tight md:text-4xl">
+              Bringing Research and Experience Together
+            </h2>
+            <div class="mt-7 space-y-5 leading-relaxed text-ink/85">
+              <p>
+                I'm a speaker, facilitator and executive coach who helps leaders and teams lead at
+                their peak and achieve exceptional results.
+              </p>
+              <p>
+                Drawing on over a decade of work with Fortune 500 companies, I design and deliver
+                results-oriented learning solutions that strengthen leadership capabilities and
+                translate learning into meaningful business impact.
+              </p>
+              <p>
+                My approach combines real-world corporate experience, research-informed frameworks
+                and practical, experiential learning methods.
+              </p>
+            </div>
+            <div class="mt-8 border-t border-gold-600/50 pt-6">
+              <h3 class="eyebrow">My Corporate Roots</h3>
+              <ul class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-heading text-base font-bold text-ink">
+                <li>Merrill Lynch</li>
+                <li aria-hidden="true" class="text-gold-600">&middot;</li>
+                <li>BNY Mellon</li>
+                <li aria-hidden="true" class="text-gold-600">&middot;</li>
+                <li>Hewlett-Packard</li>
+              </ul>
+            </div>
+          </FadeIn>
+          <FadeIn delay={150}>
+            <dl class="grid gap-5 sm:grid-cols-2">
+              {
+                expertiseMetrics.map((metric) => (
+                  <div class="expertise-card relative isolate min-w-0 overflow-hidden rounded-2xl p-6 pb-16 text-white shadow-sm ring-1 ring-white/10 sm:min-h-72 lg:min-h-76">
+                    <dt class="relative z-10 font-heading text-xs font-semibold uppercase leading-relaxed tracking-[0.18em] text-[#ffda62] sm:text-sm">
+                      {metric.label}
+                    </dt>
+                    <dd>
+                      <span class="relative z-10 mt-5 block font-heading text-[clamp(3.5rem,5.5vw,4.5rem)] font-bold leading-none tracking-tight text-[#ffda62]">
+                        {metric.value}
+                      </span>
+                      <p class="relative z-10 mt-3 text-lg leading-snug text-white/95 xl:text-xl">
+                        {metric.description}
+                      </p>
+                      <svg class="pointer-events-none absolute inset-x-0 bottom-0 h-24 w-full" viewBox="0 0 360 130" preserveAspectRatio="none" fill="none" aria-hidden="true">
+                        <path d="M0 70C85 20 130 120 225 65C280 35 310 0 360 0V130H0Z" fill="#3f6593" fill-opacity="0.3" />
+                        <path d="M0 125C100 60 155 100 245 65C295 45 325 50 360 75V130H0Z" fill="#0d2138" fill-opacity="0.5" />
+                      </svg>
+                      <PeakAccent class="absolute bottom-6 right-6 h-6" />
+                    </dd>
+                  </div>
+                ))
+              }
+            </dl>
           </FadeIn>
         </div>
       </Container>
@@ -246,3 +372,9 @@ const background = [
 
   <Footer slot="footer" />
 </BaseLayout>
+
+<style>
+  .expertise-card {
+    background: radial-gradient(ellipse at top left, #213f69, #142e52 65%, #102646);
+  }
+</style>
