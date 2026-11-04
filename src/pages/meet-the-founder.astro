@@ -38,12 +38,12 @@ const expertiseMetrics = [
   },
   {
     label: 'Programme Design',
-    value: '10+',
+    value: '11+',
     description: 'Years designing leadership development programmes',
   },
   {
     label: 'Coaching',
-    value: '5+',
+    value: '6+',
     description: 'Years of executive coaching experience',
   },
   {
@@ -57,7 +57,7 @@ const professionalCredentials = [
   {
     label: '2025 | Certified Partner',
     title: 'Miki Island High-Performance Simulation',
-    provider: 'Aeqlia',
+    provider: 'Aeqlia Ptd Ltd',
   },
   {
     label: '2023 | Certification',
@@ -66,27 +66,27 @@ const professionalCredentials = [
   },
   {
     label: '2021 | Certification',
-    title: 'Brain-Based Coaching',
+    title: 'Brain-Based Coaching Certificate',
     provider: 'NeuroLeadership Institute',
   },
   {
     label: '2018 | Facilitator Training',
     title: 'Corporate Athlete® Performance Course',
-    provider: 'Johnson & Johnson Human Performance Institute',
+    provider: 'Johnson & Johnson Human Performance Institute®',
   },
 ] as const;
 
 const recognitionContributions = [
   {
-    icon: 'award',
+    icon: 'linkedin',
     title: 'LinkedIn Top Voice',
     description: 'Recognised for thought leadership (2024)',
   },
   {
-    icon: 'book',
+    icon: 'book-open',
     title: 'Published Co-Author',
     description:
-      'Breakthrough: Secrets of Growth, Happiness and Bouncebacks from Women Around the World (2018)',
+      'Breakthrough: Secrets of Growth, Happiness and Bouncebacks (2018)',
   },
   {
     icon: 'microphone',
@@ -349,14 +349,15 @@ const recognitionContributions = [
     <!-- Professional credentials -->
     <Section bg="navy" id="professional-credentials">
       <Container>
-        <div class="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] xl:gap-12">
-          <FadeIn>
+        <div class="grid items-start gap-10 lg:grid-cols-2 lg:gap-x-0">
+          <FadeIn class="lg:pr-10 xl:pr-12">
             <p class="eyebrow eyebrow--on-dark">Professional Credentials</p>
             <h2 class="mt-4 max-w-sm text-3xl leading-tight text-white md:text-4xl">
               Credibility Built on Continuous Learning
             </h2>
+            <PeakAccent class="mt-5" />
             <p class="mt-5 max-w-sm leading-relaxed text-navy-100">
-              My professional credentials reflect a commitment to growth and staying at the forefront of leadership development.
+             My credentials reflect a commitment to deepening my expertise and staying at the forefront of leadership development.
             </p>
           </FadeIn>
           <FadeIn delay={150}>
@@ -368,7 +369,7 @@ const recognitionContributions = [
                     <p class="font-heading text-xs font-semibold uppercase leading-relaxed tracking-[0.15em] text-gold-400">
                       {credential.label}
                     </p>
-                    <h3 class="mt-1 text-lg leading-snug text-white">{credential.title}</h3>
+                    <h3 class="mt-1 text-xl leading-snug text-white">{credential.title}</h3>
                     <p class="mt-2 text-sm leading-relaxed text-navy-100">{credential.provider}</p>
                   </li>
                 ))
@@ -380,29 +381,42 @@ const recognitionContributions = [
     </Section>
 
     <!-- Recognition and contributions -->
-    <Section bg="cream" id="recognition-and-contributions">
+    <Section bg="white" id="recognition-and-contributions">
       <Container>
         <FadeIn>
           <p class="eyebrow">Recognition and Contributions</p>
-          <h2 class="mt-5 text-3xl leading-tight md:text-4xl">
-            Committed to Professional Excellence
+          <h2 class="mt-2 text-3xl leading-tight md:text-4xl">
+            Creating Impact Beyond the Boardroom
           </h2>
-          <p class="mt-5 leading-relaxed text-ink/75 md:text-lg">
-            Alongside my work with clients, I share ideas and contribute to communities advancing
-            leadership practice.
+          <p class="mt-3 leading-relaxed text-ink/85">
+            Alongside my work with leaders, I share insights, write and contribute to communities that advance leadership practice.
           </p>
         </FadeIn>
-        <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <div class="mt-8 grid gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
           {
             recognitionContributions.map((contribution, index) => (
-              <FadeIn delay={index * 75} class="h-full">
-                <article class="flex h-full items-start gap-5 rounded-2xl bg-white p-6 lg:gap-6 lg:p-8">
-                  <span class="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-navy-800 text-[#ffda62] sm:h-16 sm:w-16">
-                    <Icon name={contribution.icon} class="h-7 w-7 sm:h-8 sm:w-8" />
+              <FadeIn delay={index * 75} class="h-full min-w-0">
+                <article class="relative flex h-full min-w-0 items-start gap-3 px-4 lg:px-5">
+                  {index > 0 && (
+                    <span
+                      aria-hidden="true"
+                      class:list={[
+                        'absolute inset-y-0 left-0 hidden w-px bg-gold-600/30',
+                        index % 2 === 1 ? 'sm:block' : 'lg:block',
+                      ]}
+                    />
+                  )}
+                  <span class:list={[
+                    'inline-flex h-8 w-8 shrink-0 items-center justify-center text-gold-600',
+                    { 'rounded-sm border border-gold-600': contribution.icon === 'linkedin' },
+                  ]}>
+                    <Icon name={contribution.icon} class={contribution.icon === 'linkedin' ? 'h-6 w-6' : 'h-8 w-8'} />
                   </span>
                   <div class="min-w-0">
-                    <h3 class="text-xl leading-snug">{contribution.title}</h3>
-                    <p class="mt-3 leading-relaxed text-ink/85">{contribution.description}</p>
+                    <h3 class="max-w-44 text-base leading-tight text-navy-950">{contribution.title}</h3>
+                    <p class:list={['mt-2 text-sm leading-relaxed text-ink/85', { italic: contribution.icon === 'book-open' }]}>
+                      {contribution.description}
+                    </p>
                   </div>
                 </article>
               </FadeIn>
@@ -413,16 +427,24 @@ const recognitionContributions = [
     </Section>
 
     <!-- CTA -->
-    <Section bg="navy" class="text-center">
+    <section class="founder-cta bg-cream py-12 text-center md:py-14">
       <Container>
-        <h2 class="text-3xl md:text-4xl">Ready to find out what's possible for you?</h2>
-        <div class="mt-8">
-          <Button href="https://zcal.co/karolinagwinner" variant="gold" target="_blank" rel="noopener noreferrer">
-            Book A Discovery Call
+        <span aria-hidden="true" class="mx-auto mb-4 block h-0.5 w-10 bg-gold-600"></span>
+        <p class="eyebrow">Take the Next Step</p>
+        <h2 class="mt-5 text-[1.75rem] font-semibold leading-[1.2] sm:text-[1.875rem] md:text-[2.125rem]">
+          Let's Turn Leadership Potential into Impact
+        </h2>
+        <p class="mx-auto mt-5 max-w-[37.5rem] text-balance text-[1.0625rem] leading-[1.6] text-ink/80 md:text-lg">
+          Explore how we can strengthen leadership capability, amplify influence
+          and drive sustainable performance in your organisation.
+        </p>
+        <div class="mt-7">
+          <Button href="https://zcal.co/karolinagwinner" variant="gold" target="_blank" rel="noopener noreferrer" class="founder-cta-button">
+            Book an Introductory Call
           </Button>
         </div>
       </Container>
-    </Section>
+    </section>
   </main>
 
   <Footer slot="footer" />
@@ -431,5 +453,21 @@ const recognitionContributions = [
 <style>
   .expertise-card {
     background: radial-gradient(ellipse at top left, #213f69, #142e52 65%, #102646);
+  }
+
+  .founder-cta :global(.founder-cta-button) {
+    min-height: 54px;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 1rem;
+    line-height: 1.5;
+    box-shadow: none;
+    transition: background-color 180ms ease;
+  }
+
+  .founder-cta :global(.founder-cta-button:hover) {
+    background-color: color-mix(in srgb, var(--color-gold-600) 90%, var(--color-navy-950));
+    box-shadow: none;
+    transform: none;
   }
 </style>
