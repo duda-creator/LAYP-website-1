@@ -53,7 +53,11 @@ import Section from '../components/Section.astro';
               <div class="contact-card-copy">
                 <h2 id="talk-heading">Prefer to Talk<br />It Through?</h2>
                 <span class="contact-accent" aria-hidden="true"></span>
-                <p>Whether you have a specific challenge or are exploring possibilities, we're here to help you move forward.</p>
+                <p>
+                  Whatever your challenge<br />
+                  or ambition, we're here<br />
+                  to help you move forward.
+                </p>
               </div>
             </div>
 
@@ -131,9 +135,10 @@ import Section from '../components/Section.astro';
     max-width: 25rem;
     margin-inline: auto;
     overflow: hidden;
-    border: 1px solid var(--color-navy-100);
+    border: 1px solid var(--color-beige);
     border-radius: .625rem;
     background: var(--color-cream);
+    box-shadow: 0 8px 30px rgba(15, 35, 60, 0.05);
     text-align: center;
   }
 
@@ -169,7 +174,7 @@ import Section from '../components/Section.astro';
 
   .contact-card-photo {
     position: absolute;
-    inset: 0 0 0 auto;
+    inset: 0 -10% 0 auto;
     width: 70%;
     height: 100%;
     object-fit: cover;
@@ -206,14 +211,16 @@ import Section from '../components/Section.astro';
   }
 
   .contact-card-copy p {
-    max-width: 10.5rem;
-    margin-top: 1.5rem;
+    max-width: 11.875rem;
+    margin-top: 1.25rem;
     color: var(--color-navy-950);
-    font-size: clamp(.875rem, 3.5cqi, 1rem);
-    line-height: 1.5;
+    font-size: clamp(.9375rem, 3.75cqi, 1.0625rem);
+    font-weight: 600;
+    line-height: 1.55;
   }
 
   .contact-card-details {
+    border-top: 1px solid rgb(255 255 255 / 90%);
     padding: 1.5rem clamp(1rem, 4cqi, 1.25rem) 1.5rem;
     background: var(--color-cream);
     text-align: left;
@@ -240,7 +247,7 @@ import Section from '../components/Section.astro';
   .contact-actions {
     display: grid;
     justify-items: stretch;
-    gap: .71875rem;
+    gap: .8625rem;
     margin-top: 1.25rem;
   }
 
@@ -249,11 +256,11 @@ import Section from '../components/Section.astro';
   }
 
   .contact-action {
-    display: inline-flex;
+    display: grid;
+    grid-template-columns: 1rem minmax(0, 1fr) .875rem;
     width: 100%;
     max-width: 100%;
     align-items: center;
-    justify-content: center;
     gap: .5rem;
     min-height: 3rem;
     padding: .75rem 1.5rem;
@@ -264,7 +271,7 @@ import Section from '../components/Section.astro';
     font-size: .875rem;
     font-weight: 700;
     line-height: 1.5;
-    text-align: center;
+    text-align: left;
     transition: background-color .2s, filter .2s;
   }
 
@@ -300,6 +307,15 @@ import Section from '../components/Section.astro';
 
     .contact-card {
       max-width: none;
+      margin-top: .75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .contact-card {
+      position: sticky;
+      top: 100px;
+      align-self: start;
     }
   }
 </style>
