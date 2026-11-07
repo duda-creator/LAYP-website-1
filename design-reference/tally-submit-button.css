@@ -1,0 +1,54 @@
+/*
+ * Paste this entire file into the Tally form editor:
+ * Customize > Custom CSS, then publish the form changes.
+ * Custom CSS requires Tally Pro. This file is a paste-ready reference;
+ * the website cannot apply it inside Tally's separate iframe.
+ * Only the submit button is styled; form fields stay unchanged.
+ * Official guide: https://tally.so/help/add-custom-styles
+ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+.tally-submit-button > div > div,
+.tally-submit-button > div,
+.tally-submit-button button {
+  flex: 1;
+  width: 100%;
+}
+
+.tally-submit-button button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  height: auto;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 8px;
+  background: #b98947;
+  color: #0d2138;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  box-shadow: none;
+  transition: background-color 200ms;
+}
+
+.tally-submit-button button:hover:not(:disabled) {
+  background: #a88046;
+}
+
+.tally-submit-button button:focus-visible {
+  outline: 2px solid #0d2138;
+  outline-offset: 3px;
+}
+
+.tally-submit-button button svg {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: inherit;
+}

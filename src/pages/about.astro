@@ -12,6 +12,7 @@ import PeakAccent from '../components/PeakAccent.astro';
 import Section from '../components/Section.astro';
 
 import founderPhoto from '../assets/images/founder-smiling.jpg';
+import heroPhoto from '../assets/images/20260903 - 63 - Karolina Gwinner at Host.jpg';
 import peaksFramework from '../assets/images/peaks-framework.png';
 
 const values = [
@@ -46,12 +47,22 @@ const values = [
 
   <main>
     <!-- Hero -->
-    <Section bg="white">
-      <Container class="max-w-3xl text-center">
-        <p class="eyebrow">About us</p>
+    <Section bg="navy" class="relative flex min-h-[30rem] items-center overflow-hidden md:min-h-[36rem]">
+      <Image
+        src={heroPhoto}
+        alt="Participants smiling together during a leadership workshop"
+        class="absolute inset-0 h-full w-full object-cover object-[55%_40%] md:object-[center_40%]"
+        widths={[640, 960, 1280, 1920, 2560]}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-navy-950/60" aria-hidden="true"></div>
+      <Container class="relative max-w-3xl text-center">
+        <p class="eyebrow eyebrow--on-dark">About us</p>
         <h1 class="mt-4 text-4xl md:text-5xl">Guiding Leaders To Leading At Their Peak</h1>
         <div class="mt-6 flex justify-center"><PeakAccent /></div>
-        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink/80">
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/90">
           Helping leaders and teams elevate how they show up, communicate, and perform under
           pressure.
         </p>
