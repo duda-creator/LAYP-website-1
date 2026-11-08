@@ -23,6 +23,9 @@ const field =
   aria-describedby="newsletter-help"
   class:list={['validate newsletter-form relative mx-auto max-w-2xl', { 'newsletter-form--dark': onDark }]}
 >
+  <!-- Newsletter segmentation tag from the latest Mailchimp embed. -->
+  <input type="hidden" name="tags" value="1950896" />
+
   <!-- Preserve Mailchimp's bot-trap field from the supplied embed. -->
   <div aria-hidden="true" class="absolute -left-[5000px]">
     <input
