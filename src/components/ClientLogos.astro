@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import logosOne from '../assets/images/logos 1.png';
+import logosTwo from '../assets/images/logos 2.png';
+import logosThree from '../assets/images/logos 3.png';
+import logosFour from '../assets/images/logos 4.png';
+// Official GSK asset: https://www.gsk.com/nuxtassets/icons/gsk-logo.svg
+import gskLogo from '../assets/images/gsk.svg';
+
+// Each supplied image contains several logos. Frame individual brands with CSS
+// so the original assets remain intact and the grid can reflow on small screens.
+const logos = [
+  { name: 'DB Schenker', source: logosFour, crop: [46, 160, 203, 42], displayWidth: 180 },
+  { name: 'Zurich', source: logosOne, crop: [57, 63, 219, 58], displayWidth: 172 },
+  { name: 'Aon', source: logosTwo, crop: [38, 68, 110, 45], displayWidth: 96 },
+  { name: 'AIA', source: logosTwo, crop: [176, 56, 75, 74], displayWidth: 54 },
+  { name: 'Zuellig Pharma', source: logosThree, crop: [54, 160, 208, 52], displayWidth: 174 },
+  { name: 'Maersk', source: logosFour, crop: [46, 64, 204, 51], displayWidth: 174 },
+  { name: 'Standard Chartered', source: logosOne, crop: [69, 149, 202, 82], displayWidth: 172 },
+  { name: 'GSK', source: gskLogo, crop: [0, 0, 106, 33], displayWidth: 96 },
+  { name: 'ALL Accor', source: logosTwo, crop: [180, 160, 72, 67], displayWidth: 56 },
+  { name: 'Fuji Xerox', source: logosThree, crop: [53, 69, 213, 44], displayWidth: 180 },
+] as const;
+---
+
+<section class="bg-cream py-12 md:py-16" aria-labelledby="client-logos-heading">
+  <Container>
+    <h2 id="client-logos-heading" class="text-center text-2xl leading-tight text-navy-800 sm:text-3xl md:text-4xl">
+      Trusted by World-Leading Organisations
+    </h2>
+    <ul class="client-logos-grid" role="list" aria-label="Client organisations">
+      {
+        logos.map(({ name, source, crop: [x, y, width, height], displayWidth }) => (
+          <li class="client-logo">
+            <span
+              class="client-logo-frame"
+              style={{ '--logo-width': `${displayWidth}px`, 'aspect-ratio': `${width} / ${height}` }}
+            >
+              <Image
+                src={source}
+                alt={name}
+                class="client-logo-image"
+                style={{
+                  width: `${source.width / width * 100}%`,
+                  left: `${-x / width * 100}%`,
+                  top: `${-y / height * 100}%`,
+                }}
+                loading="lazy"
+              />
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </Container>
+</section>
+
+<style>
+  .client-logos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 1.75rem 1.5rem;
+    max-width: 62rem;
+    margin: 2.5rem auto 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .client-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 4.5rem;
+  }
+
+  .client-logo-frame {
+    position: relative;
+    display: block;
+    width: min(100%, var(--logo-width));
+    overflow: hidden;
+  }
+
+  .client-logo-image {
+    position: absolute;
+    max-width: none;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    .client-logos-grid {
+      /* Cap each column to its widest logo, then distribute the gaps evenly. */
+      grid-template-columns:
+        minmax(0, 180px)
+        minmax(0, 172px)
+        minmax(0, 96px)
+        minmax(0, 56px)
+        minmax(0, 180px);
+      justify-content: space-between;
+      gap: 2rem 1.75rem;
+      margin-top: 3rem;
+    }
+  }
+</style>
