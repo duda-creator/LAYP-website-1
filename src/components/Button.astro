@@ -7,6 +7,8 @@
  * - outline-light: for navy surfaces
  */
 interface Props {
+  id?: string;
+  name?: string;
   href?: string;
   variant?: 'primary' | 'gold' | 'secondary' | 'outline-light' | 'navy';
   type?: 'button' | 'submit';
@@ -15,7 +17,7 @@ interface Props {
   class?: string;
 }
 
-const { href, variant = 'primary', type = 'button', target, rel, class: className = '' } = Astro.props;
+const { id, name, href, variant = 'primary', type = 'button', target, rel, class: className = '' } = Astro.props;
 
 const base =
   'inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-lg px-6 py-3 text-center font-heading text-base font-semibold transition hover:-translate-y-0.5 active:translate-y-0';
@@ -34,6 +36,8 @@ const Tag = href ? 'a' : 'button';
 ---
 
 <Tag
+  id={id}
+  name={name}
   href={href}
   type={href ? undefined : type}
   target={href ? target : undefined}

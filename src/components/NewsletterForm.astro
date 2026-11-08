@@ -2,36 +2,44 @@
 import Button from './Button.astro';
 
 interface Props {
-  /** Lighter status-message colours for use on dark surfaces */
+  /** Lighter helper-text colours for use on dark surfaces */
   onDark?: boolean;
 }
 
 const { onDark = false } = Astro.props;
+
+const mailchimpAction =
+  'https://karolinagwinner.us2.list-manage.com/subscribe/post?u=2e2252ec46dce38e93a6da87a&id=71aa4df4cc&f_id=0023dbe3f0';
 
 const field =
   'w-full rounded-lg border border-navy-800/20 bg-white px-4 py-3 text-base text-ink placeholder:text-ink/40 transition focus:border-navy-600 focus:outline-none focus:ring-2 focus:ring-navy-600/25';
 ---
 
 <form
-  data-w3form
-  data-success-message="You're in! Look out for your first edition."
-  data-error-message="Subscription failed. Please try again."
-  data-status-on-dark={onDark ? '' : undefined}
-  novalidate
-  class="mx-auto max-w-2xl"
+  action={mailchimpAction}
+  method="post"
+  id="mc-embedded-subscribe-form"
+  name="mc-embedded-subscribe-form"
+  aria-describedby="newsletter-help"
+  class:list={['validate newsletter-form relative mx-auto max-w-2xl', { 'newsletter-form--dark': onDark }]}
 >
-  <input type="hidden" name="access_key" value="13507d48-81e6-4c6a-9906-658724b6078c" />
-  <input type="hidden" name="subject" value="New newsletter subscriber — leadatyourpeak.com" />
-  <input type="hidden" name="from_name" value="Lead At Your Peak website" />
-  <!-- Honeypot — hidden from humans, tempting for bots -->
-  <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <!-- Preserve Mailchimp's bot-trap field from the supplied embed. -->
+  <div aria-hidden="true" class="absolute -left-[5000px]">
+    <input
+      type="text"
+      name="b_2e2252ec46dce38e93a6da87a_71aa4df4cc"
+      tabindex="-1"
+      autocomplete="off"
+      value=""
+    />
+  </div>
 
   <div class="grid gap-3 sm:grid-cols-[1fr_1fr_1.4fr_auto]">
     <div>
-      <label for="newsletter-first-name" class="sr-only">First name</label>
+      <label for="mce-FNAME" class="sr-only">First name</label>
       <input
-        id="newsletter-first-name"
-        name="first_name"
+        id="mce-FNAME"
+        name="FNAME"
         type="text"
         required
         autocomplete="given-name"
@@ -40,22 +48,22 @@ const field =
       />
     </div>
     <div>
-      <label for="newsletter-second-name" class="sr-only">Second name</label>
+      <label for="mce-LNAME" class="sr-only">Last name</label>
       <input
-        id="newsletter-second-name"
-        name="second_name"
+        id="mce-LNAME"
+        name="LNAME"
         type="text"
         required
         autocomplete="family-name"
-        placeholder="Second name"
+        placeholder="Last name"
         class={field}
       />
     </div>
     <div>
-      <label for="newsletter-email" class="sr-only">Email address</label>
+      <label for="mce-EMAIL" class="sr-only">Email address</label>
       <input
-        id="newsletter-email"
-        name="email"
+        id="mce-EMAIL"
+        name="EMAIL"
         type="email"
         required
         autocomplete="email"
@@ -63,19 +71,80 @@ const field =
         class={field}
       />
     </div>
-    <Button type="submit" variant="primary">Subscribe</Button>
+    <Button id="mc-embedded-subscribe" name="subscribe" type="submit" variant="primary">Subscribe</Button>
   </div>
 
-  <p class={onDark ? 'mt-6 text-center text-xs text-white/70' : 'mt-6 text-center text-xs text-ink/60'}>
+  <div id="mce-responses" class="mt-3 text-center text-sm font-medium">
+    <div
+      id="mce-error-response"
+      class="response"
+      style="display: none;"
+      role="alert"
+    ></div>
+    <div
+      id="mce-success-response"
+      class="response"
+      style="display: none;"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+  </div>
+
+  <p id="newsletter-help" class={onDark ? 'mt-6 text-center text-xs text-white/70' : 'mt-6 text-center text-xs text-ink/60'}>
     We respect your inbox. Unsubscribe anytime.
   </p>
-
-  <!-- Invisible hCaptcha — only challenges suspicious traffic, verified server-side by Web3Forms -->
-  <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" data-size="invisible"></div>
-
-  <p data-form-status class="mt-3 hidden text-sm font-medium" role="status" aria-live="polite"></p>
 </form>
 
-<script>
-  import '../scripts/web3forms';
+<!-- Mailchimp's embed script validates fields and submits without navigating. -->
+<script is:inline src="https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+<script is:inline>
+  (function ($) {
+    window.fnames = [];
+    window.ftypes = [];
+    window.fnames[1] = 'FNAME';
+    window.ftypes[1] = 'text';
+    window.fnames[2] = 'LNAME';
+    window.ftypes[2] = 'text';
+    window.fnames[0] = 'EMAIL';
+    window.ftypes[0] = 'email';
+  }(jQuery));
+  var $mcj = jQuery.noConflict(true);
 </script>
+
+<style>
+  .newsletter-form {
+    --newsletter-error: #b91c1c;
+    --newsletter-success: #15803d;
+  }
+
+  .newsletter-form--dark {
+    --newsletter-error: #fca5a5;
+    --newsletter-success: #86efac;
+  }
+
+  #mce-error-response {
+    color: var(--newsletter-error);
+  }
+
+  #mce-success-response {
+    color: var(--newsletter-success);
+  }
+
+  .newsletter-form :global(div.mce_inline_error) {
+    margin-top: .375rem;
+    color: var(--newsletter-error);
+    font-size: .875rem;
+    line-height: 1.5;
+  }
+
+  .newsletter-form :global(input.mce_inline_error) {
+    border-color: var(--newsletter-error);
+  }
+
+  .newsletter-form :global(.response a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
