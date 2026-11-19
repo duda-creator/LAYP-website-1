@@ -17,35 +17,47 @@ import heroPhoto from '../assets/images/hero-session.jpg';
 import founderPhoto from '../assets/images/founder-smiling.jpg';
 import purposePhoto from '../assets/images/purpose-power-pose.jpg';
 import newsletterPhoto from '../assets/images/Newsletter group of leaders smiling.jpg';
+import trainingPhoto from '../assets/images/leadership-training.jpg';
+import coachingPhoto from '../assets/images/Karolina coaching a female senior leader.png';
+import keynotePhoto from '../assets/images/Leadership keynote speaker Karolina Gwinner.JPG';
+import journeysPhoto from '../assets/images/unilever-event-drive-performance.jpg';
 
 const services = [
   {
-    icon: 'training',
+    photo: trainingPhoto,
+    alt: 'Karolina Gwinner facilitating a leadership development workshop',
+    imagePosition: 'object-[center_10%]',
     title: 'Leadership Development Training',
     description:
       'Practical, research-informed leadership development programmes and workshops that shift how leaders and teams show up, communicate, and deliver under pressure.',
     href: '/services#leadership-development-training',
   },
   {
-    icon: 'coaching',
-    title: 'Executive And Group Coaching',
+    photo: coachingPhoto,
+    alt: 'Karolina Gwinner coaching a female senior leader',
+    imagePosition: 'object-[center_22%]',
+    title: 'Executive, Group and Team Coaching',
     description:
       'Brain-based executive coaching, delivered one-to-one or in small cohorts, that empowers senior leaders to elevate presence, strengthen influence, and maximise impact.',
     href: '/services#executive-coaching',
   },
   {
-    icon: 'simulation',
-    title: 'High-energy Keynote Presentations',
-    description:
-      'Thought-provoking keynotes that challenge conventional thinking, spark meaningful conversations, and inspire leaders and teams to reach new levels of performance and impact.',
-    href: '/services#keynote-presentations',
-  },
-  {
-    icon: 'journeys',
+    photo: journeysPhoto,
+    alt: 'Karolina Gwinner with participants in a leadership development programme',
+    imagePosition: 'object-[center_60%]',
     title: 'Custom Development Journeys',
     description:
       'Multi-stage leadership development journeys that address your organisation’s unique challenges, build critical capabilities, shift behaviours, and deliver impact across your organisation.',
     href: '/services#custom-development-journeys',
+  },
+  {
+    photo: keynotePhoto,
+    alt: 'Karolina Gwinner engaging an audience during a keynote presentation',
+    imagePosition: 'object-top',
+    title: 'High-energy Keynote Presentations',
+    description:
+      'Thought-provoking keynotes that challenge conventional thinking, spark meaningful conversations, and inspire leaders and teams to reach new levels of performance and impact.',
+    href: '/services#keynote-presentations',
   },
 ] as const;
 
@@ -57,7 +69,7 @@ const challenges = [
 ---
 
 <BaseLayout
-  title="Lead at Your Peak | Leadership Development, Executive Coaching and Keynotes"
+  title="Lead At Your Peak | Leadership Development, Executive Coaching and Keynote Presentations"
   description="We help leaders and teams in high-pressure environments strengthen presence and performance to lead with influence and impact."
 >
   <Header slot="header" />
@@ -80,7 +92,7 @@ const challenges = [
         <div class="max-w-2xl">
           <p class="eyebrow eyebrow--on-dark">Leadership development | executive coaching </p>
           <h1 class="mt-4 text-4xl leading-tight sm:text-5xl md:text-6xl">
-            Lead at Your Peak When the Stakes Are High
+            Lead At Your Peak When The Stakes Are High
           </h1>
           <PeakAccent class="mt-6" />
           <p class="mt-6 max-w-3xl text-lg leading-relaxed text-white/85">
@@ -101,7 +113,7 @@ const challenges = [
       <Container>
         <div class="mx-auto max-w-3xl text-center">
           <p class="eyebrow">Sound familiar?</p>
-          <h2 class="mt-3 text-3xl md:text-4xl">The Demands of Leadership Keep Rising</h2>
+          <h2 class="mt-3 text-3xl text-navy-800 md:text-4xl">The Demands of Leadership Keep Rising</h2>
           <p class="mt-4 leading-relaxed text-ink/70">
             Whether you're developing leaders across your organisation or strengthening your own leadership impact, today's expectations call for new ways of leading and performing.
           </p>
@@ -117,13 +129,12 @@ const challenges = [
               <h3 class="mt-6 text-xl font-bold leading-snug sm:text-2xl">
                 Your people are capable. Yet today's strengths may not be enough for tomorrow's challenges.
               </h3>
-              <div aria-hidden="true" class="mt-5 w-[93%] border-t border-gold-600/50"></div>
-              <ol class="mt-6 flex-1 space-y-5 text-base leading-relaxed text-white/90">
-                <li><span class="font-semibold">1.</span> Your leaders have the expertise, but it doesn't always translate into influence.</li>
-                <li><span class="font-semibold">2.</span> Sustained pressure is taking a toll on energy, effectiveness and long-term performance.</li>
-                <li><span class="font-semibold">3.</span> As pace and complexity increase, familiar ways of leading and working are falling short.</li>
-              </ol>
-              <Button href="/services" variant="gold" class="mt-8 w-full">Explore Leadership Solutions <span aria-hidden="true">→</span></Button>
+              <ul class="mt-6 flex-1 list-disc space-y-5 pl-5 text-base leading-relaxed text-white/90 marker:text-gold-400">
+                <li class="pl-2">Your leaders have the expertise, but it doesn't always translate into influence.</li>
+                <li class="pl-2">Sustained pressure is taking a toll on energy, effectiveness and long-term performance.</li>
+                <li class="pl-2">As pace and complexity increase, familiar ways of leading and working are falling short.</li>
+              </ul>
+              <Button href="/services" variant="gold" class="relative -top-px mt-8 w-full">Explore Leadership Solutions <span aria-hidden="true">→</span></Button>
             </article>
           </FadeIn>
 
@@ -136,13 +147,12 @@ const challenges = [
               <h3 class="mt-6 text-xl font-bold leading-snug text-navy-800 sm:text-2xl">
                 You've built a strong track record. But what brought you success so far may not be what takes you further.
               </h3>
-              <div aria-hidden="true" class="mt-5 w-[93%] border-t border-gold-600/50"></div>
-              <ol class="mt-6 flex-1 space-y-5 text-base leading-relaxed text-ink/85">
-                <li><span class="font-semibold">1.</span> You have strong ideas, but they don't always land under pressure.</li>
-                <li><span class="font-semibold">2.</span> You're valued as an expert, but not yet seen as a strategic leader.</li>
-                <li><span class="font-semibold">3.</span> You're delivering on the outside, but feeling increasingly depleted beneath the surface.</li>
-              </ol>
-              <Button href="/services#executive-coaching" variant="secondary" class="mt-8 w-full border-gold-600 !bg-white text-navy-800 hover:!bg-white hover:text-navy-800">Explore Executive Coaching <span aria-hidden="true">→</span></Button>
+              <ul class="mt-6 flex-1 list-disc space-y-5 pl-5 text-base leading-relaxed text-ink/85 marker:text-gold-600">
+                <li class="pl-2">You have strong ideas, but they don't always land under pressure.</li>
+                <li class="pl-2">You're valued as an expert, but not yet seen as a strategic leader.</li>
+                <li class="pl-2">You're delivering on the outside, but feeling increasingly depleted beneath the surface.</li>
+              </ul>
+              <Button href="/services#executive-coaching" variant="navy" class="-mx-px mt-8 min-h-[51px]! w-[calc(100%+2px)]">Explore Executive Coaching <span aria-hidden="true">→</span></Button>
             </article>
           </FadeIn>
         </div>
@@ -154,30 +164,36 @@ const challenges = [
     <Section bg="cream" id="services">
       <Container>
         <div>
-          <p class="eyebrow">Our Solutions</p>
-          <h2 class="mt-3 text-3xl md:text-4xl">How We Partner with You</h2>
+          <p class="eyebrow">Our Services</p>
+          <h2 class="mt-3 text-3xl text-navy-800 md:text-4xl">How We Partner with You</h2>
           <p class="mt-5 leading-relaxed text-ink/80">
-          Everything we do is designed to deliver measurable results and lasting shifts in mindset and behaviour. Our learning and development solutions are grounded in research in human performance science, neuroscience, and applied psychology, and powered by our proprietary frameworks, including P.E.A.K.S.™ and A.L.I.G.N.™.
+          Everything we do is designed to deliver measurable results and lasting shifts in mindset and behaviour. Our learning and development solutions are grounded in research in human performance science, neuroscience, and powered by our proprietary frameworks, including P.E.A.K.S.™ and A.L.I.G.N.™.
           </p>
         </div>
-        <div class="mt-12 grid gap-6 md:grid-cols-2">
+        <div class="mt-12 grid auto-rows-fr gap-6 md:grid-cols-2 md:gap-7 lg:mt-[38px]">
           {
             services.map((service, index) => (
               <FadeIn delay={index * 100}>
-                <Card class="flex h-full flex-col">
-                  <span class="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-navy-800/5 text-gold-600">
-                    <Icon name={service.icon} class="h-7 w-7" />
-                  </span>
-                  <h3 class="mt-5 text-xl">{service.title}</h3>
-                  <p class="mt-3 flex-1 leading-relaxed text-ink/75">{service.description}</p>
-                  <a
-                    href={service.href}
-                    class="mt-5 inline-flex items-center gap-2 font-heading text-sm font-semibold text-navy-800 transition hover:gap-3 hover:text-navy-600"
-                  >
-                    Learn More
-                    <Icon name="arrow-right" class="h-4 w-4" />
-                  </a>
-                </Card>
+                <article class="flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-lg shadow-navy-950/10 transition-[translate,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_22px_52px_-8px] hover:shadow-navy-950/20">
+                  <Image
+                    src={service.photo}
+                    alt={service.alt}
+                    class:list={['aspect-[14/5] w-full shrink-0 rounded-2xl object-cover', service.imagePosition]}
+                    widths={[480, 768, 1200]}
+                    sizes="(min-width: 1200px) 554px, (min-width: 768px) calc((100vw - 92px) / 2), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+                  />
+                  <div class="flex flex-1 flex-col p-7 sm:p-8 lg:p-9">
+                    <h3 class="text-xl leading-[1.35] lg:text-[21px]">{service.title}</h3>
+                    <p class="mb-7 mt-4 text-[15px] leading-[1.65] text-ink/75">{service.description}</p>
+                    <a
+                      href={service.href}
+                      class="group/service-cta mt-auto inline-flex items-center gap-3 self-start font-heading text-sm font-semibold text-navy-800 transition-colors duration-300 hover:text-navy-600"
+                    >
+                      Learn More
+                      <Icon name="arrow-right" class="h-5 w-5 shrink-0 text-gold-600 transition-transform duration-300 ease-out motion-safe:group-hover/service-cta:translate-x-1 motion-safe:group-focus-visible/service-cta:translate-x-1 motion-reduce:transition-none" />
+                    </a>
+                  </div>
+                </article>
               </FadeIn>
             ))
           }
@@ -191,7 +207,7 @@ const challenges = [
         <div class="mx-auto max-w-2xl text-center">
           <p class="eyebrow eyebrow--on-dark">Client voices</p>
           <h2 class="mt-3 text-3xl md:text-4xl">Trusted by Leaders Committed to Excellence</h2>
-          <p class="mt-4 text-white/75">Discover what the clients think about our services</p>
+          <p class="mt-4 text-white/75">Discover what our clients say about working with us</p>
         </div>
         <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {
@@ -212,19 +228,19 @@ const challenges = [
               },
               {
                 quote:
-                  "Karolina ran an excellent Executive Presence session for our senior LCN group in Singapore. She was extremely well prepared, highly engaging and created a genuinely interactive discussion rather than delivering a lecture. She challenged the group in the right way, prompting thoughtful reflection while sharing practical ideas that people could take straight into their day-to-day roles. It was a strong session for a senior audience: relevant, well-paced and with plenty of useful takeaways. Thank you, Karolina!",
+                  "Karolina ran an excellent Executive Presence session for our senior LCN group in Singapore. She was well prepared, highly engaging and created a genuinely interactive discussion rather than delivering a lecture. She challenged the group in the right way, prompting thoughtful reflection while sharing practical ideas that people could take straight into their day-to-day roles. It was a strong session for a senior audience: relevant, well-paced and with plenty of useful takeaways.",
                 title: "Global Consultant Relations",
                 company: "Pictet Asset Management",
                 initials: "PAM",
               },
             ].map((testimonial) => (
               <FadeIn>
-                <Card class="h-full bg-white/95">
+                <Card class="flex h-full flex-col bg-white/95">
                   <PeakAccent variant="underline" />
                   <p class="mt-4 italic leading-relaxed text-ink/70">
                     “{testimonial.quote}”
                   </p>
-                  <div class="mt-6 flex items-center gap-4">
+                  <div class="mt-auto flex items-center gap-4 pt-6">
                     <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-navy-100 text-navy-800">
                       <span class="text-xs font-bold">{testimonial.initials}</span>
                     </span>
@@ -259,7 +275,7 @@ const challenges = [
             <p class="eyebrow">Who you'll work with</p>
             <h2 class="mt-3 text-3xl md:text-4xl">A Partner Who Understands Leadership Under Pressure</h2>
             <p class="mt-5 max-w-xl leading-relaxed text-ink/80">
-              Founded by Karolina Gwinner, Lead at Your Peak brings together extensive corporate experience, a deep understanding of human behaviour, and brain-based approaches to leadership development. We combine research-informed frameworks with practical, engaging learning experiences that create meaningful and lasting change.
+              Founded by Karolina Gwinner, Lead At Your Peak brings together extensive corporate experience, a deep understanding of human behaviour, and brain-based approaches to leadership development. We combine research-informed frameworks with practical, engaging learning experiences that create meaningful and lasting change.
             </p>
             <div class="mt-8">
               <Button href="/about" variant="gold">Get to Know Us</Button>
@@ -284,9 +300,9 @@ const challenges = [
         <div class="mx-auto max-w-2xl text-center">
           <p class="eyebrow eyebrow--on-dark mx-auto text-center">Leadership Insights</p>
           <h2 class="mt-3 text-3xl md:text-4xl">The Edge Every Leader Needs</h2>
-          <p class="mt-4 leading-relaxed text-white/80">
-            Get our curated insights and resources to stay sharp, lead with presence,<br class="hidden md:block" />
-            and perform at your peak when the stakes are high.
+          <p class="mt-4 leading-relaxed text-white">
+            Get handpicked ideas, practical resources and event invitations to stay sharp, lead<br class="hidden md:block" />
+            with presence, and perform at your peak when the stakes are high.
           </p>
         </div>
         <div class="mt-9">
